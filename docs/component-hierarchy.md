@@ -15,6 +15,8 @@
   - SearchContainer
     - Search
   - NavItems
+    - FriendRequestsContainer
+      - FriendRequests
     - NotificationsContainer
       - Notifications
 
@@ -23,6 +25,8 @@
   - NavBar
   - ProfileNavBar
   - InfoPane
+  - About
+  - Friends
   - FriendsPaneContainer
       - FriendsPane
   - PostsContainer
@@ -50,7 +54,13 @@
 
   - Chat
 
+## Routes
 
+|Path                                 |Component              |
+|-------------------------------------|-----------------------|
+|"/user/:id/"                         |"Wall"                 |
+|"/user/:id/about"                    |"About"                |
+|"/user/:id/friends"                  |"Friends"              |
 
 
 
