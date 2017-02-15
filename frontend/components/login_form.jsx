@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LoginForm = ({handleChange, handleLogin}) => {
+const LoginForm = ({handleChange, handleLogin, loginGuest}) => {
   return (
     <section className="login">
       <i className="logo">facespace</i>
@@ -13,6 +13,8 @@ const LoginForm = ({handleChange, handleLogin}) => {
           type='password'
           onChange={handleChange('loginPassword')}/>
         <button id="loginbutton" type='submit'>Log In</button>
+        <button type='submit'
+                onClick={loginGuest}>Guest</button>
       </form>
     </section>
   );
