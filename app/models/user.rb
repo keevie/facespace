@@ -29,8 +29,8 @@ class User < ApplicationRecord
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
 
-    return nil if user.nil?
-    user.is_password?(password) ? user : nil
+    return :no_user if user.nil?
+    user.is_password?(password) ? user : :wrong_pass
   end
 
   def is_password?(password)

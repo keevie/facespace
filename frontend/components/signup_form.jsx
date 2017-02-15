@@ -3,7 +3,8 @@ import { Link, withRouter } from 'react-router';
 import BirthdayForm from './birthday_form';
 
 
-const SignupForm = ({handleChange, handleDateChange, handleSignup}) => {
+const SignupForm = ({handleChange, handleDateChange, handleSignup, errors}) => {
+
   return (
     <section className="signupform">
       <form onSubmit={handleSignup}>

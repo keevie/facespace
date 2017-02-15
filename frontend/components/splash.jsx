@@ -112,13 +112,15 @@ class Splash extends React.Component {
     return (
       <main>
         <LoginForm handleChange={this.handleChange}
+                   errors={this.props.errors}
                    loginGuest={this.loginGuest}
                    handleLogin={this.handleLogin} />
         <section className='main-area'>
         <FeatureList />
         <SignupForm handleChange={this.handleChange}
                     handleDateChange={this.handleDateChange}
-                    handleSignup={this.handleSignup}/>
+                    handleSignup={this.handleSignup}
+                    errors={this.props.errors} />
         </section>
       </main>
     );
