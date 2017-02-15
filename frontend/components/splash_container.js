@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     login: (user) => dispatch(login(user)),
-    signup: (user) => dispatch(login(user)),
+    signup: (user) => dispatch(signup(user)),
     clearErrors: () => dispatch(clearErrors())
   };
 };

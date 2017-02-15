@@ -6,7 +6,7 @@ import BirthdayForm from './birthday_form';
 const SignupForm = ({handleChange, handleDateChange, handleSignup}) => {
   return (
     <section className="signupform">
-      <form>
+      <form onSubmit={handleSignup}>
         <h2>Sign Up</h2>
         <h3>It's freeeeeeeee</h3>
 

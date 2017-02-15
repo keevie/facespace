@@ -24,6 +24,7 @@ class Splash extends React.Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
   }
 
   validDate(field, value) {
@@ -89,8 +90,11 @@ class Splash extends React.Component {
     const signupInfo = {
       email: this.state.signupEmail,
       password: this.state.signupPassword,
-      f_name: this.state.f_name
+      f_name: this.state.f_name,
+      l_name: this.state.f_name,
+      dob: this.state.dob
     };
+    this.props.signup(signupInfo);
   }
 
 
