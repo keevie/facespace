@@ -13,10 +13,9 @@ const App = ({children, currentUser}) => {
   else {
     return (
       <div>
-        <h1>not logged in</h1>
         <SplashContainer />
       </div>
-    )
+    );
   }
 };
 
