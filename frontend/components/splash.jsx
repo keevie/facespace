@@ -16,9 +16,9 @@ class Splash extends React.Component {
       f_name: '',
       l_name: '',
       dob: '',
-      month: 0,
-      day: 0,
-      year: 0,
+      month: 'Month',
+      day: 'Day',
+      year: 'Year',
       gender: ''
     };
     this.handleLogin = this.handleLogin.bind(this);
