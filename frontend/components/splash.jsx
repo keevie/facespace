@@ -22,6 +22,7 @@ class Splash extends React.Component {
       gender: ''
     };
     this.handleLogin = this.handleLogin.bind(this);
+    this.loginGuest = this.loginGuest.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
@@ -85,6 +86,15 @@ class Splash extends React.Component {
     };
   }
 
+  loginGuest(event) {
+    event.preventDefault();
+    const guestLogin = {
+      email: 'guest@guest.com',
+      password: 'password'
+    };
+    this.props.login(guestLogin);
+  }
+
   handleSignup(event) {
     event.preventDefault();
     const signupInfo = {
@@ -102,6 +112,7 @@ class Splash extends React.Component {
     return (
       <main>
         <LoginForm handleChange={this.handleChange}
+                   loginGuest={this.loginGuest}
                    handleLogin={this.handleLogin} />
         <FeatureList />
         <SignupForm handleChange={this.handleChange}
