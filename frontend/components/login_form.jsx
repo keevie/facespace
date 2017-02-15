@@ -18,7 +18,7 @@ const LoginForm = ({handleChange, handleLogin, loginGuest}) => {
             onChange={handleChange('loginPassword')}/>
         </div>
 
-        <button id="loginbutton" type='submit'>Log In</button>
+        <button type='submit'>Log In</button>
         <button type='submit'
                 onClick={loginGuest}>Guest</button>
       </form>

@@ -1,53 +1,24 @@
-.login {
-  background-color: #3b5998;
+.main-area {
   display: flex;
-  align-items: center;
   justify-content: space-around;
+  background-color: #edf0f5;
+  padding: 20px 0px 350px 0px;
 }
 
-.login i {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 35px;
+.signupform {
+  width: 625px;
+}
+
+.signupform h2 {
+  font-family: 'Freight Sans Bold', Helvetica, Arial, sans-serif;
+  font-size: 36px;
   font-weight: bold;
-  color: white;
-  align-self: flex-start;
 }
 
-.login input {
+.signupform input {
   background-color: white;
+  border: 1px solid #ccd4e1;
+  border-radius: 4px;
+  font-family: 'Freight Sans Bold', Helvetica, Arial, sans-serif;
+  padding: 5px;
 }
-
-.login label {
-  color: white;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 12px;
-}
-
-#login {
-  align-self: flex-end;
-  display: flex;
-}
-
-
-.loginbox {
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-}
-
-
-#loginbutton {
-  background-color: #4267b2;
-  color: white;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  padding: 0px 5px 0px 5px;
-  margin: 20px;
-  border: 1px solid #29487d;
-  border-radius: 1px;
-}
-
-#loginbutton:hover {
-  background-color: #3b5998;
-}
-
