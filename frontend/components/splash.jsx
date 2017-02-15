@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
+import SignupForm from './signup_form';
+import LoginForm from './login_form';
+import FeatureList from './feature_list';
 
 class Splash extends React.Component {
   constructor(props) {
@@ -90,114 +93,16 @@ class Splash extends React.Component {
     };
   }
 
-  dayOptions() {
-    const days = ["Day"];
-    for (let i = 1; i <= 31; i++) {
-      days.push(i);
-    }
-    return days.map((day, i) => (
-      <option key={i} value={day}>{day}</option>
-    ));
-  }
-
-  monthOptions() {
-    const months = [
-      'Month',
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec'
-    ];
-    return months.map((month, i) => (
-      <option key={i} value={month}>{month}</option>
-    ));
-
-  }
-
-  yearOptions() {
-    const years = ['Year'];
-    for (let i = 1905; i <= 2017; i++) {
-      years.push(i);
-    }
-    return years.map((year, i) => (
-      <option key={i} value={year}>{year}</option>
-    ));
-  }
-
 
   render() {
     return (
       <main>
-        <section className="login">
-          <i className="logo">facespace</i>
-          <form onSubmit={this.handleLogin} id="login">
-            <label htmlFor='loginEmail'>Email</label>
-            <input id='loginEmail' onChange={this.handleChange('loginEmail')}/>
-
-            <label htmlFor='loginPassword'>Password</label>
-            <input id='loginPassword'
-              type='password'
-              onChange={this.handleChange('loginPassword')}/>
-            <button id="loginbutton" type='submit'>Log In</button>
-          </form>
-        </section>
-        <section className="signup">
-          <section className="features">
-          </section>
-          <section className="signupform">
-            <form>
-              <h2>Sign Up</h2>
-              <h3>It's freeeeeeeee</h3>
-
-              <input id='f_name'
-                placeholder="First Name"
-                onChange={this.handleChange('f_name')}/>
-
-              <input id='l_name'
-                placeholder="Last Name"
-                onChange={this.handleChange('l_name')}/>
-
-              <input id='signupEmail'
-                placeholder="email"
-                onChange={this.handleChange('signupEmail')}/>
-
-              <input id='emailConfirm'
-                placeholder="Re-enter email"
-                onChange={this.handleChange('emailConfirm')}/>
-
-              <input id='signupPassword'
-                placeholder="New password"
-                type='password'
-                onChange={this.handleChange('signupPassword')}/>
-
-              <label htmlFor='birthday'>Birthday</label>
-
-              <select onChange={this.handleDateChange('month')}>
-                {this.monthOptions()}
-              </select>
-              <select onChange={this.handleDateChange('day')}>
-                {this.dayOptions()}
-              </select>
-              <select onChange={this.handleDateChange('year')}>
-                {this.yearOptions()}
-              </select>
-
-              <input id='gender'
-                placeholder="Gender"
-                onChange={this.handleChange('gender')}/>
-
-              <button id="signupButton" type='submit'>Create Account</button>
-            </form>
-          </section>
-        </section>
+        <LoginForm handleChange={this.handleChange}
+                   handleLogin={this.handleLogin} />
+        <FeatureList />
+        <SignupForm handleChange={this.handleChange}
+                    handleDateChange={this.handleDateChange}
+                    handleSignup={this.handleSignup}/>
       </main>
     );
   }
