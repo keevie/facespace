@@ -8,9 +8,9 @@ class Api::SessionsController < ApplicationController
       render 'api/users/show'
     else
       if @user == :no_user
-        render json: { email: ["user does not exist"] }, status: 422
+        render json: { loginEmail: ["user does not exist"] }, status: 422
       elsif @user == :wrong_pass
-        render json: { password: ["wrong password"] }, status: 422
+        render json: { loginPassword: ["wrong password"] }, status: 422
       end
     end
   end
