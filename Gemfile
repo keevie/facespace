@@ -29,6 +29,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+#paperclip for file upload/aws
+gem 'paperclip'
+gem 'figaro'
+gem 'aws-sdk', '>=2.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -50,6 +54,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'annotate'
+  gem 'pry-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

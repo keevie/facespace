@@ -10,24 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170215184424) do
+ActiveRecord::Schema.define(version: 20170216203350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",           null: false
-    t.string   "f_name",          null: false
-    t.string   "l_name",          null: false
-    t.date     "dob",             null: false
+    t.string   "email",                null: false
+    t.string   "f_name",               null: false
+    t.string   "l_name",               null: false
+    t.date     "dob",                  null: false
     t.string   "location"
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
-    t.string   "prof_image_url"
-    t.string   "cover_image_url"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "password_digest",      null: false
+    t.string   "session_token",        null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.string   "gender"
+    t.string   "profile_file_name"
+    t.string   "profile_content_type"
+    t.integer  "profile_file_size"
+    t.datetime "profile_updated_at"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["f_name"], name: "index_users_on_f_name", using: :btree
     t.index ["l_name"], name: "index_users_on_l_name", using: :btree
