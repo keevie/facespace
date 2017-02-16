@@ -98,9 +98,16 @@ class SignupForm extends React.Component {
         errorType = field;
       }
     }
+
+    let redBorder = '';
+    if (errorType) {
+      redBorder = 'redborder';
+    }
+
     return (
       <div className='signup-field'>
         <input id={field}
+            className = {redBorder}
             placeholder={mapIdToValue[field]}
             onFocus={this.toggleToolTip(field, true)}
             onBlur={this.toggleToolTip(field, false)}

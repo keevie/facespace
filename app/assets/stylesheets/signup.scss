@@ -20,8 +20,11 @@
   padding: 7px;
 }
 
+.signupform .redborder {
+  border: 2px solid #b94a48;
+}
+
 #f_name {
-  // margin-right: 10px;
   width: 90%;
 }
 #l_name {
@@ -42,14 +45,6 @@
   padding: 10px 30px 10px 30px;
   border: 1px solid black;
   border-radius: 4px;
-}
-
-#loginEmail-error {
-  border: 2px solid #b94a48;
-}
-
-#loginPassword-error {
-  border: 2px solid #b94a48;
 }
 
 .signup-field {
