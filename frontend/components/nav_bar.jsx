@@ -16,6 +16,7 @@ class NavBar extends React.Component {
         <div id='prof-link'>
           {this.props.session.currentUser.f_name}
         </div>
+        <a id='home-link' href='/'>Home</a>
         <div className='log-out-container'>
           <i className="fa fa-caret-down"
              onClick={this.props.logout}
