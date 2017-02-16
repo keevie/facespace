@@ -104,6 +104,10 @@ class SignupForm extends React.Component {
       redBorder = 'redborder';
     }
 
+    let fieldType='text';
+    if (field === 'signupPassword') {
+      fieldType = 'password';
+    }
     return (
       <div className='signup-field'>
         <input id={field}
@@ -111,7 +115,8 @@ class SignupForm extends React.Component {
             placeholder={mapIdToValue[field]}
             onFocus={this.toggleToolTip(field, true)}
             onBlur={this.toggleToolTip(field, false)}
-            onChange={this.props.handleChange({field})}/>
+            type={fieldType}
+            onChange={this.props.handleChange(field)}/>
         {field !== 'f_name' && field !== 'l_name' && this.renderError(errorType)}
         {this.renderToolTip(errorType)}
       </div>
