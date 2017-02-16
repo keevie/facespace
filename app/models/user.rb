@@ -21,6 +21,11 @@ class User < ApplicationRecord
   validates :f_name, :l_name, :dob, :password_digest, presence: true
   validates :password, length: { minimum: 8, allow_nil: true }
 
+  has_attached_file :profile, default_url: 'missing.png'
+  has_attached_file :cover, default_url: 'missing.png'
+  validates_attachment_content_type :profile, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
+
   attr_reader :password
 
   after_initialize :ensure_session_token
