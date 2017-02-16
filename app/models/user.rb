@@ -34,11 +34,18 @@ class User < ApplicationRecord
   has_attached_file :cover, default_url: 'missing.png'
   validates_attachment_content_type :profile, content_type: /\Aimage\/.*\Z/
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
+  after_save :set_profile_url
 
   attr_reader :password
 
   after_initialize :ensure_session_token
 
+  def set_profile_url
+    unless profile_url
+      self.profile_url = self.id
+      self.save
+    end
+  end
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)

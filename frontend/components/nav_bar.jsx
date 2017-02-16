@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -14,7 +15,9 @@ class NavBar extends React.Component {
                  placeholder='Search facespace' />
         </div>
         <div id='prof-link'>
-          {this.props.session.currentUser.f_name}
+          <Link to={this.props.session.currentUser.profile_url}>
+            {this.props.session.currentUser.f_name}
+          </Link>
         </div>
         <a id='home-link' href='/'>Home</a>
         <a href='/'> <img src={window.facespaceAssets.friends} /></a>
