@@ -17,6 +17,8 @@ class NavBar extends React.Component {
           {this.props.session.currentUser.f_name}
         </div>
         <a id='home-link' href='/'>Home</a>
+        <a href='/'> <img src={window.facespaceAssets.friends} /></a>
+        <a href='/'> <img src={window.facespaceAssets.notifications} /></a>
         <div className='log-out-container'>
           <i className="fa fa-caret-down"
              onClick={this.props.logout}
