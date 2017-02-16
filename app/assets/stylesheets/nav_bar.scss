@@ -1,0 +1,37 @@
+.navbar {
+  background-color: #3b5998;
+  display: flex;
+  padding: 10px;
+  justify-content: space-around;
+}
+
+.navbar img {
+  width: 25px;
+}
+
+.navbar #search {
+  background: white;
+  padding: 2px;
+  width: 450px;
+  border-radius: 2px;
+  margin-left: 15px;
+}
+
+.navbar .leftside {
+  display: flex;
+}
+
+.navbar #prof-link {
+  font-family: Helvetica, Arial, sans-serif;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  padding-top: 5px;
+}
+
+.navbar .log-out-container {
+  border-left: 2px solid #355089;
+  padding-left: 15px
+}
+
+

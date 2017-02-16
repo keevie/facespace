@@ -5,5 +5,8 @@
       user: current_user
     ).html_safe %>
   <% end %>
+  window.facespaceAssets = {
+    logo: '<%= asset_path('navbarlogo.png') %>'
+  }
 </script>
 <main id="root"></main>
