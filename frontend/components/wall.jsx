@@ -28,7 +28,8 @@ class Wall extends React.Component {
       coverModalisOpen: false,
       profModalisOpen: false,
       imageFile: null,
-      imageUrl: null
+      imageUrl: null,
+      loading: true
     };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -46,23 +47,24 @@ class Wall extends React.Component {
   }
 
   user () {
-    return this.props.user;
+    return this.props.user.action.user;
   }
 
   ownWall() {
-    return this.props.session.currentUser.id === this.props.user.id; 
+    return this.props.session.currentUser.id === this.props.user.id;
   }
 
   profileUrl () {
-    return this.user().profile_url;
+    return this.user().profile;
   }
 
   coverUrl () {
-    return this.user().cover_url;
+    return this.user().cover;
   }
 
   componentDidMount() {
-    this.props.fetchUser(this.props.params.profile_url);
+    this.props.fetchUser(this.props.params.profile_url)
+      .then(() => this.setState({loading: false}));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -140,6 +142,9 @@ class Wall extends React.Component {
   }
 
   render() {
+    if (this.state.loading) {
+      return <h1>loading...</h1>;
+    }
 
     return (
       <section className='wall'>
