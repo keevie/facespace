@@ -4,3 +4,14 @@ export const fetchUser = (profileUrl) => {
     url: `api/users/${profileUrl}`
   });
 };
+
+export const updateUser = (file, profileUrl) => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `api/users/${profileUrl}`,
+    processData: false,
+    contentType: false,
+    dataType: 'json',
+    data: file
+  });
+};
