@@ -2,17 +2,42 @@ import React from 'react';
 import WallNavBar from './wall_nav_bar';
 import Modal from 'react-modal';
 
+const modalStyle = {
+  overlay: {
+    position          :    'fixed',
+    top               :    '50%',
+    left              :    '50%',
+    // backgroundColor   :    'rgba(255, 255, 255, 0.75)',
+    backgroundColor   :    'white',
+    height            :    '500px',
+    width             :    '700px',
+    marginTop         :    '-250px',
+    marginLeft        :    '-450px',
+    zIndex            :    1000000
+  },
+
+  content: {
+  }
+};
+
+
+
 class Wall extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       coverModalisOpen: false,
-      profModalisOpen: false
+      profModalisOpen: false,
+      imageFile: null,
+      imageUrl: null
     };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.updateFile = this.updateFile.bind(this);
+    this.renderModal = this.renderModal.bind(this);
   }
-  componentWillMount() {
+
+  componentWillMount () {
     Modal.setAppElement('body');
   }
 
@@ -53,25 +78,65 @@ class Wall extends React.Component {
     };
   }
 
+  updateFile (event){
+    const file = event.currentTarget.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({ imageFile: file, imageUrl: fileReader.result });
+    };
+
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
+  }
+
+  renderModal(type) {
+    let titlebar;
+    if (type === 'profModalisOpen') {
+      titlebar = 'Upload a new profile picture';
+    }
+    else {
+      titlebar = 'Upload a new cover photo';
+    }
+    return (
+      <Modal
+        className = 'image-upload'
+        isOpen = {this.state[type]}
+        style={modalStyle}
+        contentLabel=''>
+        <p>{titlebar}</p>
+        <input onChange={this.updateFile} type='file'/>
+        <i className="fa fa-times"
+           onClick={this.closeModal(type)}
+           aria-hidden="true"></i>
+      </Modal>
+    );
+  }
+
   render() {
-  return (
-    <section className='wall'>
-      <div className='cover'>
-        <img id='cover-photo' src={this.coverUrl}/>
-        <div id='edit-cover'>
-          <i className="fa fa-camera" aria-hidden="true"></i>
-        </div>
 
-        <div id='prof-photo-container'>
-          <img id='profile-photo' src={this.profileUrl}/>
-        </div>
-        <div id='edit-prof'>
-          <i className="fa fa-camera" aria-hidden="true"></i>
-        </div>
+    return (
+      <section className='wall'>
+        <div className='cover'>
+          <img id='cover-photo' src={this.coverUrl}/>
+          <div onClick={this.openModal('coverModalisOpen')} id='edit-cover'>
+            <i className="fa fa-camera" aria-hidden="true"></i>
+          </div>
 
-      </div>
-      <WallNavBar />
-    </section>
+          {this.renderModal('coverModalisOpen')}
+
+          <div id='prof-photo-container'>
+            <img id='profile-photo' src={this.profileUrl}/>
+          </div>
+          <div onClick={this.openModal('profModalisOpen')} id='edit-prof'>
+            <i className="fa fa-camera" aria-hidden="true"></i>
+          </div>
+
+          {this.renderModal('profModalisOpen')}
+
+        </div>
+        <WallNavBar />
+      </section>
     );
   }
 }

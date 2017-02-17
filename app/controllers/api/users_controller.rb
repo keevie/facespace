@@ -15,4 +15,8 @@ class Api::UsersController < ApplicationController
       render :show
     end
   end
+
+  def update
+
+  end
 end
