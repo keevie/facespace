@@ -1,0 +1,30 @@
+.wall {
+  display: flex;
+  justify-content: center;
+}
+
+.wall .cover {
+  position: absolute;
+}
+
+
+.wall #cover-photo {
+  width: 845px;
+  height: 320px;
+  position: relative;
+}
+
+
+.wall #profile-photo {
+  width: 165px;
+  height: 165px;
+  border: 5px solid white;
+  position: relative;
+  top: -150px;
+  left: 20px;
+}
+
+.wall #prof-photo-container {
+  border: 1px solid black;
+  border-radius: 2px;
+}

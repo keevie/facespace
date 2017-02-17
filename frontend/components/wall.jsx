@@ -2,7 +2,14 @@ import React from 'react';
 
 const Wall = (props) => {
   return (
-    <h1> welcome to the wall</h1>
+    <section className='wall'>
+      <div className='cover'>
+        <img id='cover-photo' src={window.facespaceAssets.defaultCover}/>
+        <div id='prof-photo-container'>
+          <img id='profile-photo' src={window.facespaceAssets.defaultProfile}/>
+        </div>
+      </div>
+    </section>
   );
 };
 

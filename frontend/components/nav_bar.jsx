@@ -14,18 +14,22 @@ class NavBar extends React.Component {
           <input id='search'
                  placeholder='Search facespace' />
         </div>
-        <div id='prof-link'>
-          <Link to={this.props.session.currentUser.profile_url}>
-            {this.props.session.currentUser.f_name}
-          </Link>
-        </div>
-        <a id='home-link' href='/'>Home</a>
-        <a href='/'> <img src={window.facespaceAssets.friends} /></a>
-        <a href='/'> <img src={window.facespaceAssets.notifications} /></a>
-        <div className='log-out-container'>
-          <i className="fa fa-caret-down"
-             onClick={this.props.logout}
-             aria-hidden="true"></i>
+        <div className="rightside">
+          <ul id='icons'>
+            <li>
+              <Link id='prof-link'to={this.props.session.currentUser.profile_url}>
+                {this.props.session.currentUser.f_name}
+              </Link>
+            </li>
+            <li><a id='home-link' href='/'>Home</a></li>
+            <li><a href='/'> <img src={window.facespaceAssets.friends} /></a></li>
+            <li><a href='/'> <img src={window.facespaceAssets.notifications} /></a></li>
+          </ul>
+          <div className='log-out-container'>
+            <i className="fa fa-caret-down"
+              onClick={this.props.logout}
+              aria-hidden="true"></i>
+          </div>
         </div>
 
       </section>

@@ -21,14 +21,27 @@
   display: flex;
 }
 
-.navbar #prof-link, #home-link {
+.navbar .rightside {
+  display: flex;
+}
+
+.navbar .rightside ul {
+  display: flex;
+  align-items: center;
+}
+
+
+
+.navbar .rightside ul li {
+  padding: 0px 10px 0px 10px;
+}
+
+#prof-link, #home-link {
   font-family: Helvetica, Arial, sans-serif;
   color: white;
   font-weight: bold;
   font-size: 12px;
-  padding-top: 5px;
 }
-
 
 .navbar .log-out-container {
   border-left: 2px solid #355089;
