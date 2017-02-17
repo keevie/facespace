@@ -8,4 +8,11 @@ class Api::UsersController < ApplicationController
       render json: @user.errors, status: 422
     end
   end
+
+  def show
+    @user = User.find_by(profile_url: params[:id])
+    if @user
+      render :show
+    end
+  end
 end

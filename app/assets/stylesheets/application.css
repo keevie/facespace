@@ -33,6 +33,10 @@ span, article, footer, time, small {
   background: transparent;
 }
 
+body {
+  background-color: #edf0f5;
+}
+
 ul {
   list-style: none;
 }

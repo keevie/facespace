@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from './app_container';
-import Wall from './wall';
+import Wall from './wall_container';
 
 
 const Root = ({ store }) => {
