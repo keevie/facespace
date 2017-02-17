@@ -1,6 +1,5 @@
 .wall {
   width: 845px;
-  background-color: red;
   margin-left: 175px;
 }
 
@@ -14,11 +13,11 @@
   position: relative;
 }
 
-
 .wall #profile-photo {
   width: 165px;
   height: 165px;
 }
+
 
 .wall #prof-photo-container {
   background-color: white;
@@ -35,14 +34,89 @@
   z-index: 1;
 }
 
+.wall #edit-prof, .wall #edit-cover {
+  display:none;
+}
+
+.wall #cover-photo:hover + #edit-cover {
+  position: absolute;
+  display: block;
+  top: 0px;
+  left: 25px;
+  width: 143px;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10px;
+}
+
+.wall #prof-photo-container:hover + #edit-prof {
+  display: block;
+  position: absolute;
+  top: 290px;
+  z-index: 3;
+  left: 25px;
+  width: 143px;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.wall #edit-cover:hover {
+  display: block;
+  position: absolute;
+  top: 0px;
+  z-index: 3;
+  left: 25px;
+  width: 143px;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.wall #edit-prof:hover {
+  display: block;
+  position: absolute;
+  top: 290px;
+  z-index: 3;
+  left: 25px;
+  width: 143px;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.wall #edit-prof:after {
+  content: "Update Profile Picture";
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.wall #edit-prof i {
+  color: white;
+  padding-right: 5px;
+}
+
+.wall #edit-cover:after {
+  content: "Update Cover Photo";
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.wall #edit-cover i {
+  color: white;
+  padding-right: 5px;
+}
+
+
 .wall .wallnav {
   background-color: white;
   height: 43px;
   position: relative;
-  // top: -174px;
   border: 1px solid #d3d6db;
   border-radius: 2px;
-  // z-index: -1;
   display: flex;
   justify-content: center;
   align-items: center;

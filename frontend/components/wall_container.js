@@ -4,7 +4,8 @@ import { fetchUser } from '../actions/user_actions';
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    user: state.user,
+    session: state.session
   };
 };
 
