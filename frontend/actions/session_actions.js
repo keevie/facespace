@@ -1,4 +1,5 @@
 import * as APIUtil from '../util/session_api_util';
+import {browserHistory} from 'react-router';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
@@ -16,7 +17,8 @@ export const logout = () => {
   return (dispatch) => {
     return APIUtil.logout()
       .then(() => dispatch(receieveCurrentUser(null)),
-        err => dispatch(receieveErrors(err.responseJSON)));
+        err => dispatch(receieveErrors(err.responseJSON)))
+          .then(() => browserHistory.push('/'));
   };
 };
 
