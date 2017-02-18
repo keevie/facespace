@@ -9,7 +9,8 @@ export const login = (user) => {
   return (dispatch) => {
     return APIUtil.login(user)
       .then(newUser => dispatch(receieveCurrentUser(newUser)),
-        err => dispatch(receieveErrors(err.responseJSON)));
+        err => dispatch(receieveErrors(err.responseJSON)))
+          .then(() => browserHistory.push('/'));
   };
 };
 
@@ -26,7 +27,8 @@ export const signup = (user) => {
   return (dispatch) => {
     return APIUtil.signup(user)
       .then(newUser => dispatch(receieveCurrentUser(newUser)),
-        err => dispatch(receieveErrors(err.responseJSON)));
+        err => dispatch(receieveErrors(err.responseJSON)))
+          .then(() => browserHistory.push('/'));
   };
 };
 
