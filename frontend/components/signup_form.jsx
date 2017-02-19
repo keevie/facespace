@@ -142,7 +142,11 @@ class SignupForm extends React.Component {
 
           {this.renderField('signupPassword')}
 
-        <BirthdayForm handleDateChange={this.props.handleDateChange} />
+          <BirthdayForm
+            renderToolTip={this.renderToolTip}
+            toggleToolTip={this.toggleToolTip}
+            errors={this.props.errors}
+            handleDateChange={this.props.handleDateChange} />
           {this.renderError('dob')}
 
           {this.renderField('gender')}
