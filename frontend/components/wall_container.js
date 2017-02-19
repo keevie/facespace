@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Wall from './wall';
-import { fetchUser, updateUser } from '../actions/user_actions';
+import { fetchUser } from '../actions/user_actions';
 
 const mapStateToProps = state => {
   return {
@@ -11,8 +11,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchUser: (profileUrl) => dispatch(fetchUser(profileUrl)),
-    updateUser: (file, profileUrl) => dispatch(updateUser(file, profileUrl))
+    fetchUser: (profileUrl) => dispatch(fetchUser(profileUrl))
   };
 };
 
