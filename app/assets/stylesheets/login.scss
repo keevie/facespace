@@ -16,6 +16,16 @@
 
 .login input {
   background-color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  padding: 2px;
+  border: 1px solid black;
+  border-radius: 1px;
+}
+
+.login input:focus {
+  border: 1px solid #bdc7d8;
+  border-radius: 1px;
 }
 
 .login label {
@@ -70,15 +80,15 @@
   font-size: 18px;
   position: relative;
   top: 16px;
-  left: 180px;
+  left: 120px;
 }
 
 .alert-arrow {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
   position: absolute;
-  top: 0px;
-  right: 225px;
+  top: 20px;
+  right: 630px;
   width: auto;
   background-color: #b94a48;
   white-space: nowrap;
