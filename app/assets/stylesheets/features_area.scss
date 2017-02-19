@@ -1,0 +1,29 @@
+.features {
+  position: relative;
+  width: 400px;
+  left: 45px;
+  top: 40px;
+}
+
+.features h1 {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 30px;
+}
+
+.features li {
+  display: flex;
+  align-items: center;
+  margin: 20px 0px 0px 0px;
+}
+
+.features li .feature-icon {
+  width: 45px;
+  margin-right: 20px;
+}
+
+.features li p {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}

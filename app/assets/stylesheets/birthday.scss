@@ -1,0 +1,21 @@
+.birthday {
+  margin: 10px 0px 10px 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+#birthdayForm {
+  display: flex;
+}
+
+.birthday label {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+.birthday select {
+  margin-top: 5px;
+  padding: 5px;
+  background-color: #DDDDDD;
+  border: 1px solid #bdc7d8;
+}
+

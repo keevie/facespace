@@ -1,0 +1,593 @@
+/* line 1, /home/daniel/appacademy/facespace/app/assets/stylesheets/features_area.scss */
+.features {
+  position: relative;
+  width: 400px;
+  left: 45px;
+  top: 20px;
+}
+
+/* line 8, /home/daniel/appacademy/facespace/app/assets/stylesheets/features_area.scss */
+.features h1 {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  line-height: 30px;
+}
+/* line 1, /home/daniel/appacademy/facespace/app/assets/stylesheets/login.scss */
+.login {
+  background-color: #3b5998;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px 0px 10px 0px;
+}
+
+/* line 9, /home/daniel/appacademy/facespace/app/assets/stylesheets/login.scss */
+.logo {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 35px;
+  font-weight: bold;
+  color: white;
+  align-self: flex-start;
+}
+
+/* line 17, /home/daniel/appacademy/facespace/app/assets/stylesheets/login.scss */
+.login input {
+  background-color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  padding: 2px;
+  border: 1px solid black;
+  border-radius: 1px;
+}
+
+/* line 26, /home/daniel/appacademy/facespace/app/assets/stylesheets/login.scss */
+.login input:focus {
+  border: 1px solid #bdc7d8;
+  border-radius: 1px;
+}
+
+/* line 31, /home/daniel/appacademy/facespace/app/assets/stylesheets/login.scss */
+.login label {
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+}
+
+/* line 37, /home/daniel/appacademy/facespace/app/assets/stylesheets/login.scss */
+#login {
+  align-self: flex-end;
+  display: flex;
+  position: relative;
+}
+
+/* line 44, /home/daniel/appacademy/facespace/app/assets/stylesheets/login.scss */
+.loginbox {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 15px 0px 15px;
+  position: relative;
+}
+
+/* line 51, /home/daniel/appacademy/facespace/app/assets/stylesheets/login.scss */
+.login button {
+  background-color: #4267b2;
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  padding: 0px 5px 0px 5px;
+  margin: 13px 5px 0px 5px;
+  border: 1px solid #29487d;
+  border-radius: 1px;
+}
+
+/* line 62, /home/daniel/appacademy/facespace/app/assets/stylesheets/login.scss */
+.login button:hover {
+  background-color: #3b5998;
+}
+
+/* line 66, /home/daniel/appacademy/facespace/app/assets/stylesheets/login.scss */
+#loginEmail-error {
+  border: 2px solid #b94a48;
+}
+
+/* line 70, /home/daniel/appacademy/facespace/app/assets/stylesheets/login.scss */
+#loginPassword-error {
+  border: 2px solid #b94a48;
+}
+
+/* line 75, /home/daniel/appacademy/facespace/app/assets/stylesheets/login.scss */
+.error-alert {
+  position: absolute;
+}
+
+/* line 79, /home/daniel/appacademy/facespace/app/assets/stylesheets/login.scss */
+.error-alert i {
+  color: #b94a48;
+  font-size: 18px;
+  position: relative;
+  top: 16px;
+  left: 120px;
+}
+
+/* line 87, /home/daniel/appacademy/facespace/app/assets/stylesheets/login.scss */
+.alert-arrow {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  position: absolute;
+  top: 0px;
+  right: 445px;
+  width: auto;
+  background-color: #b94a48;
+  white-space: nowrap;
+  padding: 10px;
+  border-radius: 2px;
+  color: white;
+}
+
+/* line 101, /home/daniel/appacademy/facespace/app/assets/stylesheets/login.scss */
+.alert-arrow:after {
+  display: block;
+  position: absolute;
+  left: 100%;
+  top: 20px;
+  content: '';
+  border: 5px solid transparent;
+  border-left: 5px solid #b94a48;
+}
+/* line 1, /home/daniel/appacademy/facespace/app/assets/stylesheets/nav_bar.scss */
+.navbar {
+  background-color: #3b5998;
+  display: flex;
+  padding: 10px;
+  justify-content: space-around;
+}
+
+/* line 8, /home/daniel/appacademy/facespace/app/assets/stylesheets/nav_bar.scss */
+.navbar img {
+  width: 25px;
+}
+
+/* line 12, /home/daniel/appacademy/facespace/app/assets/stylesheets/nav_bar.scss */
+.navbar #search {
+  background: white;
+  padding: 2px;
+  width: 450px;
+  border-radius: 2px;
+  margin-left: 15px;
+}
+
+/* line 20, /home/daniel/appacademy/facespace/app/assets/stylesheets/nav_bar.scss */
+.navbar .leftside {
+  display: flex;
+}
+
+/* line 24, /home/daniel/appacademy/facespace/app/assets/stylesheets/nav_bar.scss */
+.navbar .rightside {
+  display: flex;
+}
+
+/* line 28, /home/daniel/appacademy/facespace/app/assets/stylesheets/nav_bar.scss */
+.navbar .rightside ul {
+  display: flex;
+  align-items: center;
+}
+
+/* line 35, /home/daniel/appacademy/facespace/app/assets/stylesheets/nav_bar.scss */
+.navbar .rightside ul li {
+  padding: 0px 10px 0px 10px;
+}
+
+/* line 39, /home/daniel/appacademy/facespace/app/assets/stylesheets/nav_bar.scss */
+#prof-link, #home-link {
+  font-family: Helvetica, Arial, sans-serif;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+/* line 46, /home/daniel/appacademy/facespace/app/assets/stylesheets/nav_bar.scss */
+.navbar .log-out-container {
+  border-left: 2px solid #355089;
+  padding-left: 15px;
+}
+/* line 1, /home/daniel/appacademy/facespace/app/assets/stylesheets/signup.scss */
+.signupform {
+  width: 410px;
+  position: relative;
+  right: 65px;
+}
+
+/* line 7, /home/daniel/appacademy/facespace/app/assets/stylesheets/signup.scss */
+.signupform h2 {
+  font-family: 'Freight Sans Bold', 'Open Sans', Helvetica, Arial, sans-serif;
+  font-size: 36px;
+}
+
+/* line 12, /home/daniel/appacademy/facespace/app/assets/stylesheets/signup.scss */
+.signupform input {
+  background-color: white;
+  border: 1px solid #ccd4e1;
+  border-radius: 4px;
+  margin: 5px 0px 5px 0px;
+  width: 100%;
+  font-family: Helvetica, Arial, sans-serif;
+  padding: 7px;
+}
+
+/* line 22, /home/daniel/appacademy/facespace/app/assets/stylesheets/signup.scss */
+.signupform .redborder {
+  border: 2px solid #b94a48;
+}
+
+/* line 26, /home/daniel/appacademy/facespace/app/assets/stylesheets/signup.scss */
+#f_name {
+  width: 100%;
+}
+
+/* line 30, /home/daniel/appacademy/facespace/app/assets/stylesheets/signup.scss */
+#l_name {
+  width: 100%;
+}
+
+/* line 34, /home/daniel/appacademy/facespace/app/assets/stylesheets/signup.scss */
+#full-name {
+  display: flex;
+  position: relative;
+}
+
+/* line 39, /home/daniel/appacademy/facespace/app/assets/stylesheets/signup.scss */
+.signup-field {
+  margin-right: 20px;
+  position: relative;
+}
+
+/* line 44, /home/daniel/appacademy/facespace/app/assets/stylesheets/signup.scss */
+#signupButton {
+  background-color: #5e9a4b;
+  color: white;
+  font-family: 'Freight Sans Bold', 'Open Sans', Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 10px 25px 10px 25px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: inset 0 1px 1px #a4e388;
+  border-color: #3b6e22 #3b6e22 #2c5115;
+  border-top-color: #3b6e22;
+  border-right-color: #3b6e22;
+  border-bottom-color: #2c5115;
+  border-left-color: #3b6e22;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* line 62, /home/daniel/appacademy/facespace/app/assets/stylesheets/signup.scss */
+#signupButton:hover {
+  background: linear-gradient(#79bc64, #578843);
+  background-image: linear-gradient(#79bc64, #578843);
+}
+
+/* line 67, /home/daniel/appacademy/facespace/app/assets/stylesheets/signup.scss */
+.error-alert-signup {
+  position: absolute;
+}
+
+/* line 71, /home/daniel/appacademy/facespace/app/assets/stylesheets/signup.scss */
+.error-alert-signup i {
+  color: #b94a48;
+  font-size: 24px;
+  position: relative;
+  top: -35px;
+  left: 380px;
+}
+
+/* line 79, /home/daniel/appacademy/facespace/app/assets/stylesheets/signup.scss */
+.error-alert-signup-name {
+  position: absolute;
+}
+
+/* line 83, /home/daniel/appacademy/facespace/app/assets/stylesheets/signup.scss */
+.error-alert-signup-name i {
+  color: #b94a48;
+  font-size: 24px;
+  position: relative;
+  top: 10px;
+  left: 380px;
+}
+
+/* line 91, /home/daniel/appacademy/facespace/app/assets/stylesheets/signup.scss */
+.alert-arrow-signup {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  position: absolute;
+  top: 0px;
+  right: 406px;
+  width: auto;
+  background-color: #b94a48;
+  white-space: nowrap;
+  padding: 10px;
+  border-radius: 2px;
+  color: white;
+}
+
+/* line 105, /home/daniel/appacademy/facespace/app/assets/stylesheets/signup.scss */
+.alert-arrow-signup:after {
+  display: block;
+  position: absolute;
+  left: 100%;
+  top: 20px;
+  content: '';
+  border: 5px solid transparent;
+  border-left: 5px solid #b94a48;
+}
+
+/* line 115, /home/daniel/appacademy/facespace/app/assets/stylesheets/signup.scss */
+.alert-arrow-signup-fname {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  position: absolute;
+  top: 0px;
+  right: 198px;
+  width: auto;
+  background-color: #b94a48;
+  white-space: nowrap;
+  padding: 10px;
+  border-radius: 2px;
+  color: white;
+}
+
+/* line 129, /home/daniel/appacademy/facespace/app/assets/stylesheets/signup.scss */
+.alert-arrow-signup-fname:after {
+  display: block;
+  position: absolute;
+  left: 100%;
+  top: 20px;
+  content: '';
+  border: 5px solid transparent;
+  border-left: 5px solid #b94a48;
+}
+/* line 1, /home/daniel/appacademy/facespace/app/assets/stylesheets/splash.scss */
+.main-area {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0px 350px 0px;
+}
+/* line 1, /home/daniel/appacademy/facespace/app/assets/stylesheets/wall.scss */
+.wall {
+  width: 845px;
+  margin-left: 175px;
+}
+
+/* line 6, /home/daniel/appacademy/facespace/app/assets/stylesheets/wall.scss */
+.wall .cover {
+  position: relative;
+}
+
+/* line 11, /home/daniel/appacademy/facespace/app/assets/stylesheets/wall.scss */
+.wall #cover-photo {
+  height: 320px;
+  position: relative;
+}
+
+/* line 16, /home/daniel/appacademy/facespace/app/assets/stylesheets/wall.scss */
+.wall #profile-photo {
+  width: 165px;
+  height: 165px;
+}
+
+/* line 22, /home/daniel/appacademy/facespace/app/assets/stylesheets/wall.scss */
+.wall #prof-photo-container {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 4px;
+  position: absolute;
+  top: 175px;
+  left: 20px;
+  width: 170px;
+  height: 170px;
+  z-index: 1;
+}
+
+/* line 37, /home/daniel/appacademy/facespace/app/assets/stylesheets/wall.scss */
+.wall #edit-prof, .wall #edit-cover {
+  display: none;
+}
+
+/* line 41, /home/daniel/appacademy/facespace/app/assets/stylesheets/wall.scss */
+.wall #cover-photo:hover + #edit-cover {
+  position: absolute;
+  display: block;
+  top: 0px;
+  left: 25px;
+  width: 143px;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10px;
+}
+
+/* line 53, /home/daniel/appacademy/facespace/app/assets/stylesheets/wall.scss */
+.wall #prof-photo-container:hover + #edit-prof {
+  display: block;
+  position: absolute;
+  top: 290px;
+  z-index: 3;
+  left: 25px;
+  width: 143px;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+/* line 66, /home/daniel/appacademy/facespace/app/assets/stylesheets/wall.scss */
+.wall #edit-cover:hover {
+  display: block;
+  position: absolute;
+  top: 0px;
+  z-index: 3;
+  left: 25px;
+  width: 143px;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+/* line 79, /home/daniel/appacademy/facespace/app/assets/stylesheets/wall.scss */
+.wall #edit-prof:hover {
+  display: block;
+  position: absolute;
+  top: 290px;
+  z-index: 3;
+  left: 25px;
+  width: 143px;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+/* line 92, /home/daniel/appacademy/facespace/app/assets/stylesheets/wall.scss */
+.wall #edit-prof:after {
+  content: "Update Profile Picture";
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+/* line 98, /home/daniel/appacademy/facespace/app/assets/stylesheets/wall.scss */
+.wall #edit-prof i {
+  color: white;
+  padding-right: 5px;
+}
+
+/* line 103, /home/daniel/appacademy/facespace/app/assets/stylesheets/wall.scss */
+.wall #edit-cover:after {
+  content: "Update Cover Photo";
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+/* line 108, /home/daniel/appacademy/facespace/app/assets/stylesheets/wall.scss */
+.wall #edit-cover i {
+  color: white;
+  padding-right: 5px;
+}
+
+/* line 114, /home/daniel/appacademy/facespace/app/assets/stylesheets/wall.scss */
+.wall .wallnav {
+  background-color: white;
+  height: 43px;
+  position: relative;
+  border: 1px solid #d3d6db;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* line 125, /home/daniel/appacademy/facespace/app/assets/stylesheets/wall.scss */
+.wall .wallnav ul {
+  display: flex;
+}
+
+/* line 129, /home/daniel/appacademy/facespace/app/assets/stylesheets/wall.scss */
+.wall .wallnav li {
+  display: flex;
+  justify-content: center;
+  border-left: 1px solid #d3d6db;
+  padding: 13px 20px 13px 20px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  color: #4277BC;
+  font-size: 14px;
+}
+
+/* line 139, /home/daniel/appacademy/facespace/app/assets/stylesheets/wall.scss */
+.wall .wallnav li:hover {
+  background-color: #edf0f5;
+}
+
+/* line 143, /home/daniel/appacademy/facespace/app/assets/stylesheets/wall.scss */
+.wall .wallnav li:last-child {
+  border-right: 1px solid #d3d6db;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+
+html, body, header, nav, h1, a,
+ul, li, strong, main, button, i,
+section, img, div, h2, p, form,
+fieldset, label, input, textarea,
+span, article, footer, time, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+}
+
+body {
+  background-color: #edf0f5;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+input[type="password"],
+input[type="email"],
+input[type="text"],
+input[type="submit"],
+textarea,
+button {
+  /*
+  Get rid of native styling. Read more here:
+  http://css-tricks.com/almanac/properties/a/appearance/
+  */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+
+/* Clearfix */
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
