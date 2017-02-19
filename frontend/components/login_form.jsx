@@ -70,7 +70,6 @@ class LoginForm extends React.Component {
           onFocus={this.toggleToolTip('email', true)}
           onBlur={this.toggleToolTip('email', false)}
           onChange={this.props.handleChange('loginEmail')}/>
-        {this.renderToolTip('email')}
         {this.renderError(errorType)}
       </div>
     );
@@ -92,13 +91,15 @@ class LoginForm extends React.Component {
           onBlur={this.toggleToolTip('password', false)}
           onChange={this.props.handleChange('loginPassword')}/>
         {this.renderError(errorType)}
-        {this.renderToolTip('password')}
       </div>
     );
 
   }
 
   render () {
+    let toolTipType = null;
+    if (this.props.passErrors) toolTipType = 'password';
+    if (this.props.emailErrors) toolTipType = 'email';
     return (
       <section className="login">
         <i className="logo">facespace</i>
@@ -106,6 +107,7 @@ class LoginForm extends React.Component {
 
           {this.renderEmail()}
           {this.renderPass()}
+          {this.renderToolTip(toolTipType)}
 
           <button type='submit'>Log In</button>
           <button type='submit'
