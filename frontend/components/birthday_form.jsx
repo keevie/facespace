@@ -47,23 +47,36 @@ const yearOptions = () => {
 const BirthdayForm = ({handleDateChange,
   renderToolTip, errors, toggleToolTip}) => {
   let errorType = null;
-  if (errors['dob']) errorType='dob';
+  let redBorder='';
+  if (errors['dob']) {
+    errorType='dob';
+    redBorder='redborder';
+  }
   return(
-    <section className='birthday'>
+    <section className='signup-field birthday'>
       <label htmlFor='birthday'>Birthday</label>
 
       <form id='birthdayForm'>
-        <select onChange={handleDateChange('month')}>
+        <select className={redBorder}
+          onFocus={toggleToolTip('dob', true)}
+          onBlur={toggleToolTip('dob', false)}
+          onChange={handleDateChange('month')}>
           {monthOptions()}
         </select>
-        <select onChange={handleDateChange('day')}>
+        <select className={redBorder}
+          onFocus={toggleToolTip('dob', true)}
+          onBlur={toggleToolTip('dob', false)}
+          onChange={handleDateChange('day')}>
           {dayOptions()}
         </select>
-        <select onChange={handleDateChange('year')}>
+        <select className={redBorder}
+          onFocus={toggleToolTip('dob', true)}
+          onBlur={toggleToolTip('dob', false)}
+          onChange={handleDateChange('year')}>
           {yearOptions()}
         </select>
       </form>
-      {renderToolTip(errorType)}
+    {renderToolTip(errorType)}
     </section>
     );
 };
