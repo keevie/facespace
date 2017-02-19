@@ -37,6 +37,7 @@
 #login {
   align-self: flex-end;
   display: flex;
+  position: relative;
 }
 
 
@@ -87,8 +88,8 @@
   font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
   position: absolute;
-  top: 20px;
-  right: 630px;
+  top: 0px;
+  right: 445px;
   width: auto;
   background-color: #b94a48;
   white-space: nowrap;
