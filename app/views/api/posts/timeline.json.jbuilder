@@ -1,4 +1,4 @@
-json.posts @posts do |post|
+json.array! @posts do |post|
   author = User.find_by(id: post.user_id)
 
   json.body post.body

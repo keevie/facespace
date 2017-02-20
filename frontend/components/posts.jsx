@@ -7,7 +7,7 @@ class Posts extends React.Component {
   }
 
   renderPosts () {
-    const postsArray = this.props.posts.posts;
+    const postsArray = this.props.posts;
     return postsArray.map((post) => {
       return (
         <div key={post.id}>

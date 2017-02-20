@@ -5,3 +5,11 @@ export const fetchTimelinePosts = (wallId) => {
     data: {wall_id: `${wallId}`}
   });
 };
+
+export const createPost = (post) => {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/posts',
+    data: {post}
+  });
+};
