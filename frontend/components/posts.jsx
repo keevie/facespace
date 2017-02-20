@@ -22,22 +22,30 @@ class Posts extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.createPost(this.state);
+    this.setState({body: ''});
   }
 
   renderPostForm () {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input onChange={this.handleChange} />
+      <form className='post-form' onSubmit={this.handleSubmit}>
+        <input
+          placeholder="What's on your mind?"
+          value={this.state.body}
+          onChange={this.handleChange} />
         <button>Submit</button>
       </form>
     );
   }
 
   renderPosts () {
-    const postsArray = [];
+    let postsArray = [];
     Object.keys(this.props.posts).forEach((post) => {
       postsArray.push(this.props.posts[post]);
     });
+    postsArray = postsArray.sort((post2, post1) => {
+      return Date.parse(post1.created_at) - Date.parse(post2.created_at);
+    });
+
     return postsArray.map((post) => {
       return (
         <div key={post.id}>
