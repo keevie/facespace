@@ -1,6 +1,7 @@
 import React from 'react';
 import WallNavBar from './wall_nav_bar';
 import ImgUploadModal from './img_upload_modal_container';
+import Posts from './posts';
 
 
 
@@ -37,7 +38,8 @@ class Wall extends React.Component {
 
   componentDidMount() {
     this.props.fetchUser(this.props.params.profile_url)
-      .then(() => this.setState({loading: false}));
+      .then(() => this.props.fetchTimelinePosts(this.props.user.id))
+        .then(() => this.setState({loading: false}));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -63,7 +65,6 @@ class Wall extends React.Component {
     if (this.state.loading) {
       return <h1>loading...</h1>;
     }
-
     return (
       <section className='wall'>
         <div className='cover'>
@@ -92,7 +93,11 @@ class Wall extends React.Component {
             closeModal={this.closeModal('profModalisOpen')}/>
 
         </div>
+
         <WallNavBar />
+
+        <Posts posts={this.props.posts}/>
+
       </section>
     );
   }
