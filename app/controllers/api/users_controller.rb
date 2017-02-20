@@ -21,6 +21,7 @@ class Api::UsersController < ApplicationController
     @user = User.find_by(profile_url: params[:id])
     if @user
       @user.update!(user_params)
+      render :show
     end
   end
 end
