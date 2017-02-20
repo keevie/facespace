@@ -7,11 +7,13 @@ class Posts extends React.Component {
   }
 
   renderPosts () {
-    return this.props.posts.map((post) => {
+    const postsArray = this.props.posts.posts;
+    return postsArray.map((post) => {
       return (
-        <div>
+        <div key={post.id}>
           <p>{post.body}</p>
-          <p>{post.author}</p>
+          <p>By {post.author_f_name + ' ' + post.author_l_name}</p>
+          <p>At {post.created_at}</p>
         </div>
       );
     });
