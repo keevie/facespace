@@ -62,7 +62,7 @@ class ImgUploadModal extends React.Component{
     }
   }
 
-  componentWillReceiveProps() {
+  componentWillReceiveProps(newProps) {
     if (this.props.type === 'profModalisOpen') {
       this.setState({titlebar: 'Update profile picture'});
       this.setState({imageType: 'profile'});
@@ -72,7 +72,7 @@ class ImgUploadModal extends React.Component{
       this.setState({imageType: 'cover'});
     }
 
-    if (this.props.loading) {
+    if (newProps.loading) {
       this.setState({
         spinner: 'spinner',
         dot1: 'dot1',
@@ -88,16 +88,18 @@ class ImgUploadModal extends React.Component{
     }
   }
 
-  updateFile (event){
-    const file = event.currentTarget.files[0];
-    const fileReader = new FileReader();
-    fileReader.onloadend = () => {
-      this.setState({ imageFile: file, imageUrl: fileReader.result });
-    };
+  updateFile (imageType){
+    return (event) => {
+      const file = event.currentTarget.files[0];
+      const fileReader = new FileReader();
+      fileReader.onloadend = () => {
+        this.setState({ imageFile: file, imageUrl: fileReader.result });
+      };
 
-    if (file) {
-      fileReader.readAsDataURL(file);
-    }
+      if (file) {
+        fileReader.readAsDataURL(file);
+      }
+    };
   }
 
   sendImage (imageType) {
@@ -109,11 +111,12 @@ class ImgUploadModal extends React.Component{
       modalType = 'coverModalisOpen';
     }
     return (e) => {
-      debugger
-      let formData = new FormData();
-      formData.append(`user[${imageType}]`, e.currentTarget.files[0]);
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append(`user[${imageType}]`, this.state.imageFile);
       this.props.updateUser(formData, this.props.profileData.profile_url)
-        .then(() => this.setState({imageFile: null, imageUrl: ''}));
+        .then(() => this.setState({imageFile: null, imageUrl: ''}))
+          .then(() => this.props.closeModal());
     };
   }
 
@@ -133,13 +136,13 @@ class ImgUploadModal extends React.Component{
         <nav>
           <h1>{this.state.titlebar}</h1>
           <i className="fa fa-times"
-            onClick={this.props.closeModal(this.props.type)}
+            onClick={this.props.closeModal}
             aria-hidden="true"></i>
         </nav>
         <section className='uploadForm'>
           <form onSubmit={this.sendImage(this.state.imageType)}>
-            <input onChange={this.updateFile} type='file'/>
-            <button type='submit'>Submit</button>
+            <input onChange={this.updateFile(this.state.imageType)} type='file'/>
+            <button>Submit</button>
           </form>
 
           { this.state.imageUrl && this.renderPreview()}

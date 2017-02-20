@@ -35,7 +35,6 @@ export const updateUser = (file, profileUrl) => {
   return (dispatch) => {
     dispatch(loadingUserInfo());
     return APIUtil.updateUser(file, profileUrl)
-      .then(user => dispatch(receiveUserInfo(user)))
-        .then(() => dispatch(loadedUserInfo()));
+      .then(user => dispatch(receiveUserInfo(user)));
   };
 };

@@ -76,7 +76,7 @@ class Wall extends React.Component {
             type='coverModalisOpen'
             isOpen={this.state['coverModalisOpen']}
             loading={this.props.loading}
-            closeModal={this.closeModal}/>
+            closeModal={this.closeModal('coverModalisOpen')}/>
 
           <div id='prof-photo-container'>
             <img id='profile-photo' src={this.profileUrl()}/>
@@ -89,7 +89,7 @@ class Wall extends React.Component {
             type='profModalisOpen'
             loading={this.props.loading}
             isOpen={this.state['profModalisOpen']}
-            closeModal={this.closeModal}/>
+            closeModal={this.closeModal('profModalisOpen')}/>
 
         </div>
         <WallNavBar />
