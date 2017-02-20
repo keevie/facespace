@@ -11,8 +11,10 @@ class Api::PostsController < ApplicationController
 
   end
 
-  def newsfeed
-    wall = User.find_by(id: )
+  def timeline
+    wall = User.find_by(id: params[:wall_id])
     @posts = wall.posts
+    render :timeline
   end
+
 end
