@@ -5,7 +5,7 @@ import {loadingUserInfo, updateUser} from '../actions/user_actions';
 
 const mapStateToProps = state => {
   return {
-    profileData: state.user,
+    profileData: state.user.user,
     session: state.session
   };
 };

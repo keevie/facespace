@@ -7,10 +7,10 @@ const modalStyle = {
     top               :    '50%',
     left              :    '50%',
     backgroundColor   :    'white',
-    height            :    '500px',
+    height            :    '400px',
     width             :    '700px',
-    marginTop         :    '-250px',
-    marginLeft        :    '-450px',
+    marginTop         :    '-200px',
+    marginLeft        :    '-350px',
     zIndex            :    1000000
   },
 
@@ -31,8 +31,7 @@ class ImgUploadModal extends React.Component{
       imageType:  '',
       spinner:    '',
       dot1:       '',
-      dot2:       '',
-      loading: false
+      dot2:       ''
     };
   }
 
@@ -46,39 +45,45 @@ class ImgUploadModal extends React.Component{
       this.setState({titlebar: 'Upload a new cover photo'});
       this.setState({imageType: 'cover'});
     }
-    if (this.props.profileData.loading) {
+    if (this.props.loading) {
       this.setState({
-        spinner: '.spinner',
-        dot1: '.dot1',
-        dot2: '.dot2',
+        spinner: 'spinner',
+        dot1: 'dot1',
+        dot2: 'dot2',
         titlebar: ''
+      });
+    }
+    else {
+      this.setState({
+        spinner: '',
+        dot1: '',
+        dot2: ''
       });
     }
   }
 
   componentWillReceiveProps() {
     if (this.props.type === 'profModalisOpen') {
-      this.setState({titlebar: 'Upload a new profile picture'});
+      this.setState({titlebar: 'Update profile picture'});
       this.setState({imageType: 'profile'});
     }
     else {
-      this.setState({titlebar: 'Upload a new cover photo'});
+      this.setState({titlebar: 'Update new cover photo'});
       this.setState({imageType: 'cover'});
     }
-    if (this.props.profileData.loading) {
+
+    if (this.props.loading) {
       this.setState({
-        spinner: '.spinner',
-        dot1: '.dot1',
-        dot2: '.dot2',
-        titlebar: ''
+        spinner: 'spinner',
+        dot1: 'dot1',
+        dot2: 'dot2'
       });
     }
-
-    if (this.state.loading) {
+    else {
       this.setState({
-        spinner: '.spinner',
-        dot1: '.dot1',
-        dot2: '.dot2'
+        spinner: '',
+        dot1: '',
+        dot2: ''
       });
     }
   }
@@ -96,7 +101,6 @@ class ImgUploadModal extends React.Component{
   }
 
   sendImage (imageType) {
-    // debugger
     let modalType;
     if (imageType === 'profile') {
       modalType = 'profModalisOpen';
@@ -104,15 +108,12 @@ class ImgUploadModal extends React.Component{
     else {
       modalType = 'coverModalisOpen';
     }
-    debugger
     return (e) => {
-      this.updateFile(e);
+      debugger
       let formData = new FormData();
       formData.append(`user[${imageType}]`, e.currentTarget.files[0]);
-      this.props.loadingUserInfo();
-      this.setState({loading: true});
       this.props.updateUser(formData, this.props.profileData.profile_url)
-        .then(() => this.setState({loading: false}));
+        .then(() => this.setState({imageFile: null, imageUrl: ''}));
     };
   }
 
@@ -129,19 +130,26 @@ class ImgUploadModal extends React.Component{
         style={modalStyle}
         contentLabel=''>
 
-        <div className={this.state.spinner}>{this.state.titlebar}
-          <div className={this.state.dot1}></div>
-          <div className={this.state.dot2}></div>
-        </div>
-        <form>
-          <input onChange={this.sendImage(this.state.imageType)} type='file'/>
-        </form>
+        <nav>
+          <h1>{this.state.titlebar}</h1>
+          <i className="fa fa-times"
+            onClick={this.props.closeModal(this.props.type)}
+            aria-hidden="true"></i>
+        </nav>
+        <section className='uploadForm'>
+          <form onSubmit={this.sendImage(this.state.imageType)}>
+            <input onChange={this.updateFile} type='file'/>
+            <button type='submit'>Submit</button>
+          </form>
 
-        { this.state.imageUrl && this.renderPreview()}
+          { this.state.imageUrl && this.renderPreview()}
 
-        <i className="fa fa-times"
-           onClick={this.props.closeModal(this.props.type)}
-           aria-hidden="true"></i>
+          <div className={this.state.spinner}>
+            <div className={this.state.dot1}></div>
+            <div className={this.state.dot2}></div>
+          </div>
+        </section>
+
       </Modal>
     );
 

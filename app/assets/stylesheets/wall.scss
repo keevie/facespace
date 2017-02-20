@@ -144,14 +144,35 @@
   border-right: 1px solid #d3d6db;
 }
 
+.image-upload {
+}
+
+.image-upload nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.image-upload h1 {
+  font-family: 'Open Sans';
+}
+
+.image-upload .uploadForm {
+  display: flex;
+}
+
+.image-upload img {
+  width: 165px;
+  height: 165px;
+}
+
 
 .spinner {
-  margin: 100px auto;
+  // margin: 100px auto;
   width: 40px;
   height: 40px;
   position: relative;
   text-align: center;
-  
+  left: 100px;
   -webkit-animation: sk-rotate 2.0s infinite linear;
   animation: sk-rotate 2.0s infinite linear;
 }

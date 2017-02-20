@@ -16,27 +16,23 @@ class Wall extends React.Component {
     };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    this.user = this.user.bind(this);
     this.ownWall = this.ownWall.bind(this);
     this.profileUrl = this.profileUrl.bind(this);
     this.coverUrl = this.coverUrl.bind(this);
   }
 
 
-  user () {
-    return this.props.user.action.user;
-  }
 
   ownWall() {
     return this.props.session.currentUser.id === this.props.user.id;
   }
 
   profileUrl () {
-    return this.user().profile;
+    return this.props.user.profile;
   }
 
   coverUrl () {
-    return this.user().cover;
+    return this.props.user.cover;
   }
 
   componentDidMount() {
@@ -79,6 +75,7 @@ class Wall extends React.Component {
           <ImgUploadModal
             type='coverModalisOpen'
             isOpen={this.state['coverModalisOpen']}
+            loading={this.props.loading}
             closeModal={this.closeModal}/>
 
           <div id='prof-photo-container'>
@@ -90,6 +87,7 @@ class Wall extends React.Component {
 
           <ImgUploadModal
             type='profModalisOpen'
+            loading={this.props.loading}
             isOpen={this.state['profModalisOpen']}
             closeModal={this.closeModal}/>
 

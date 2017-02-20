@@ -34,6 +34,7 @@ class User < ApplicationRecord
   has_attached_file :cover, default_url: 'missing.png'
   validates_attachment_content_type :profile, content_type: /\Aimage\/.*\Z/
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
+
   after_save :set_profile_url
 
   attr_reader :password
