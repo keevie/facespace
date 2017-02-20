@@ -5,7 +5,8 @@ export const RECEIVE_POST = 'RECEIVE_POST';
 
 export const createPost = (post) => {
   return (dispatch) => {
-    return APIUtil.createPost(post);
+    return APIUtil.createPost(post)
+      .then(newPost => dispatch(receivePost(newPost)));
   };
 };
 
@@ -20,5 +21,12 @@ export const receivePosts = (posts) => {
   return {
     type: RECEIVE_ALL_POSTS,
     posts
+  };
+};
+
+export const receivePost = (post) => {
+  return {
+    type: RECEIVE_POST,
+    post
   };
 };

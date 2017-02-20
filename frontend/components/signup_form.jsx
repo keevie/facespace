@@ -158,6 +158,5 @@ class SignupForm extends React.Component {
   }
 }
 
-// const SignupForm = ({handleChange, handleDateChange, handleSignup, errors})
 
 export default SignupForm;

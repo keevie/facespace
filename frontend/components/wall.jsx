@@ -1,7 +1,7 @@
 import React from 'react';
 import WallNavBar from './wall_nav_bar';
 import ImgUploadModal from './img_upload_modal_container';
-import Posts from './posts';
+import Posts from './posts_container';
 
 
 
@@ -96,7 +96,7 @@ class Wall extends React.Component {
 
         <WallNavBar />
 
-        <Posts posts={this.props.posts}/>
+        <Posts posts={this.props.posts} wallId={this.props.user.id}/>
 
       </section>
     );
