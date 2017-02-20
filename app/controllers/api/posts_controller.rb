@@ -10,4 +10,9 @@ class Api::PostsController < ApplicationController
   def update
 
   end
+
+  def newsfeed
+    wall = User.find_by(id: )
+    @posts = wall.posts
+  end
 end
