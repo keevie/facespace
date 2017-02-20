@@ -40,6 +40,13 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
+  # find posts on wall, no need to find all posts by user.
+
+  has_many :posts,
+    class_name: :Post,
+    foreign_key: :wall_id,
+    primary_key: :id
+
   def set_profile_url
     unless profile_url
       self.profile_url = self.id
