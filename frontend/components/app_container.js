@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import App from './app';
+import { receiveOpenModal } from '../actions/modal_actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -7,6 +8,13 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    receiveOpenModal: () => dispatch(receiveOpenModal(null))
+  };
+};
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(App);

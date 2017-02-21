@@ -7,8 +7,8 @@ export const receiveOpenModal = (modal) => {
   };
 };
 
-export const openModal = (modal) => {
-  return (dispatch) => {
-    dispatch(receiveOpenModal(modal));
-  };
-};
+// export const openModal = (modal) => {
+//   return (dispatch) => {
+//     dispatch(receiveOpenModal(modal));
+//   };
+// };
