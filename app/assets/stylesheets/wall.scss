@@ -20,6 +20,20 @@
   height: 165px;
 }
 
+.wall #cover-name {
+  color: white;
+  text-shadow: 0 0 3px rgba(0,0,0,.8);
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 30px;
+  max-width: 275px;
+  position: relative;
+  z-index: 20;
+  top: -50px;
+  left: 210px;
+}
+
 
 .wall #prof-photo-container {
   background-color: white;

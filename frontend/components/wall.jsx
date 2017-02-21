@@ -82,6 +82,9 @@ class Wall extends React.Component {
           <div id='prof-photo-container'>
             <img id='profile-photo' src={this.profileUrl()}/>
           </div>
+          <div id='cover-name'>
+            {this.props.user.f_name + ' ' + this.props.user.l_name}
+          </div>
           <div onClick={this.openModal('profModalisOpen')} id='edit-prof'>
             <i className="fa fa-camera" aria-hidden="true"></i>
           </div>

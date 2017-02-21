@@ -1,6 +1,6 @@
 class Api::FriendshipsController < ApplicationController
   def create
-    @friendship = Friendship.new(friend_params)
+    @friendship = Friendship.new(friendship_params)
 
     if @friendship.save
       render :show
@@ -10,14 +10,14 @@ class Api::FriendshipsController < ApplicationController
   end
 
   def accept
-    friend_request = Friendship.find_by(friend_id: friend_params[:user_id] )
+    friend_request = Friendship.find_by(friend_id: friendship_params[:user_id] )
     friend_request.update!(pending: false)
-    @friendship = Friendship.new(friend_params)
+    @friendship = Friendship.new(friendship_params)
     render :show
   end
 
   def reject
-    @friendship = Friendship.find_by(friend_id: friend_params[:user_id] )
+    @friendship = Friendship.find_by(friend_id: friendship_params[:user_id] )
     @friendship.destroy
     render :show
   end
@@ -26,7 +26,7 @@ class Api::FriendshipsController < ApplicationController
 
   end
 
-  def friend_params
-    params.require(:friend).permit(:friend_id, :user_id, :pending)
+  def friendship_params
+    params.require(:friendship).permit(:friend_id, :user_id, :pending)
   end
 end
