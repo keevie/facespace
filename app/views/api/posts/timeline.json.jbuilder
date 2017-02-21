@@ -1,6 +1,6 @@
 @posts.each do |post|
   json.set! post.id do
-    author = User.find_by(id: post.user_id)
+    author = post.author;
 
     json.body post.body
     json.author_f_name author.f_name

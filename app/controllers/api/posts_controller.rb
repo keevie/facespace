@@ -22,7 +22,7 @@ class Api::PostsController < ApplicationController
 
   def timeline
     wall = User.find_by(id: params[:wall_id])
-    @posts = wall.posts
+    @posts = wall.posts.includes(:author)
     render :timeline
   end
 

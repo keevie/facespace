@@ -4,6 +4,12 @@ import moment from 'moment';
 class PostItem extends React.Component {
   constructor (props) {
     super(props);
+    this.state = {
+      edit: false,
+      body: this.props.post.body
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   renderTargetWall (post) {
@@ -43,12 +49,44 @@ class PostItem extends React.Component {
               }
             }
             aria-hidden="true"></i>
-          <button>edit</button>
+          <button onClick={() => this.setState({edit: true})}>edit</button>
           <button onClick={this.props.deletePost.bind(null, this.props.post)}>
             delete
           </button>
         </div>
       );
+    }
+  }
+
+  handleChange(event) {
+    event.preventDefault();
+    this.setState({body: event.currentTarget.value});
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.updatePost({
+      id: this.props.post.id,
+      body: this.state.body,
+      wall_id: this.props.post.wall_id,
+      user_id: this.props.currentUser.id
+    });
+    this.setState({edit: false});
+  }
+
+  renderEditOrBody () {
+    if (this.state.edit) {
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <textarea
+          onChange={this.handleChange}
+          value={this.state.body}/>
+          <button>Post</button>
+        </form>
+      );
+    }
+    else {
+      return <article>{this.props.post.body}</article>;
     }
   }
 
@@ -67,8 +105,8 @@ class PostItem extends React.Component {
             <p>{moment(this.props.post.created_at).fromNow()}</p>
           </div>
           {this.renderDropDown()}
+          {this.renderEditOrBody()}
         </header>
-        <article>{this.props.post.body}</article>
       </div>
     );
   }
