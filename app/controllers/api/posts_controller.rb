@@ -22,8 +22,14 @@ class Api::PostsController < ApplicationController
     render :timeline
   end
 
+  def destroy
+    @post = Post.find_by(id: params[:id])
+    @post.destroy
+    render :show
+  end
+
   def post_params
-    params.require(:post).permit(:body, :user_id, :wall_id)
+    params.require(:post).permit(:body, :user_id, :wall_id, :id)
   end
 
 end

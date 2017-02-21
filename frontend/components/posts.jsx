@@ -56,6 +56,7 @@ class Posts extends React.Component {
         <Post
           openModal={this.props.openModal}
           modalIsOpen={this.props.modalIsOpen}
+          deletePost={this.props.deletePost}
           key={post.id}
           currentUser={this.props.currentUser}
           post={post}

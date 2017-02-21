@@ -44,7 +44,9 @@ class PostItem extends React.Component {
             }
             aria-hidden="true"></i>
           <button>edit</button>
-          <button>delete</button>
+          <button onClick={this.props.deletePost.bind(null, this.props.post)}>
+            delete
+          </button>
         </div>
       );
     }
