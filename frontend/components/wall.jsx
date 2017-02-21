@@ -61,6 +61,26 @@ class Wall extends React.Component {
     };
   }
 
+  renderFriendRequestButton() {
+    if (this.ownWall()) {
+      return null;
+    }
+    //if friends already
+    // else if () {
+    //   return (
+    //     <div id='add-friend'>
+    //       <i className="fa fa-check" aria-hidden="true" />
+    //     </div>
+    //   );
+    // }
+    return (
+      <div id='add-friend'>
+        <i className="fa fa-user-plus" aria-hidden="true"></i>
+        Add Friend
+      </div>
+    );
+  }
+
   render() {
     if (this.state.loading) {
       return <h1>loading...</h1>;
@@ -82,9 +102,13 @@ class Wall extends React.Component {
           <div id='prof-photo-container'>
             <img id='profile-photo' src={this.profileUrl()}/>
           </div>
+
           <div id='cover-name'>
             {this.props.user.f_name + ' ' + this.props.user.l_name}
           </div>
+
+          {this.renderFriendRequestButton()}
+
           <div onClick={this.openModal('profModalisOpen')} id='edit-prof'>
             <i className="fa fa-camera" aria-hidden="true"></i>
           </div>
@@ -98,6 +122,7 @@ class Wall extends React.Component {
         </div>
 
         <WallNavBar />
+
 
         <Posts posts={this.props.posts}
           wallFName={this.props.user.f_name}

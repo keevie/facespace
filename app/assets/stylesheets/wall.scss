@@ -34,6 +34,28 @@
   left: 210px;
 }
 
+.wall #add-friend {
+  color: #4b4f56;
+  background-color: #f6f7f9;
+  position: absolute;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 2px;
+  z-index: 20;
+  left: 730px;
+  top: 280px;
+}
+
+.wall #add-friend i {
+  padding-right: 4px;
+}
+
+.wall #add-friend:hover {
+  background-color: #e9ebee;
+}
+
 
 .wall #prof-photo-container {
   background-color: white;
