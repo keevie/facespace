@@ -25,6 +25,13 @@ export const deletePost = (post) => {
   };
 };
 
+export const updatePost = (post) => {
+  return (dispatch) => {
+    return APIUtil.updatePost(post)
+      .then(updatedPost => dispatch(receivePost(updatedPost)));
+  };
+};
+
 export const removePost = (post) => {
   return {
     type: REMOVE_POST,

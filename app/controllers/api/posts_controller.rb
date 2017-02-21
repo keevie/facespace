@@ -13,7 +13,11 @@ class Api::PostsController < ApplicationController
   end
 
   def update
-
+    @post = Post.find_by(id: params[:id])
+    if @post
+      @post.update!(post_params)
+      render :show
+    end
   end
 
   def timeline
