@@ -48,7 +48,7 @@ class Posts extends React.Component {
           <i className="fa fa-caret-right" aria-hidden="true"></i>
           <p>{this.props.wallFName + ' ' + this.props.wallLName}</p>
         </div>
-      )
+      );
     }
   }
 
