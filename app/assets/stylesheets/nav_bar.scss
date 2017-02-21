@@ -26,6 +26,7 @@
 
 .navbar .rightside {
   display: flex;
+  align-items: center;
 }
 
 .navbar .rightside ul {
@@ -44,6 +45,25 @@
   color: white;
   font-weight: bold;
   font-size: 12px;
+  border-radius: 5px;
+}
+
+#prof-link {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .rightside ul li:hover {
+  background-color: #355089;
+  border-radius: 5px;
+}
+
+
+#prof-link img {
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  margin-right: 5px;
 }
 
 .navbar .log-out-container {

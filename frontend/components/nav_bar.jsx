@@ -17,7 +17,9 @@ class NavBar extends React.Component {
         <div className="rightside">
           <ul id='icons'>
             <li>
-              <Link id='prof-link'to={this.props.session.currentUser.profile_url}>
+              <Link id='prof-link'
+                to={this.props.session.currentUser.profile_url}>
+                <img src={this.props.session.currentUser.profile_thumb} />
                 {this.props.session.currentUser.f_name}
               </Link>
             </li>

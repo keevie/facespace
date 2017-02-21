@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 class Posts extends React.Component {
   constructor(props) {
@@ -54,7 +55,7 @@ class Posts extends React.Component {
           <p>{post.body}</p>
           <img className='avatar' src={post.avatar}/>
           <p>By {post.author_f_name + ' ' + post.author_l_name}</p>
-          <p>At {post.created_at}</p>
+          <p>{moment(post.created_at).fromNow()}</p>
         </div>
       );
     });
