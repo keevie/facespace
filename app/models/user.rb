@@ -68,12 +68,12 @@ class User < ApplicationRecord
 
   has_many :received_friend_requests, -> { where pending: true },
     class_name: :Friendship,
-    foreign_key: :user_id,
+    foreign_key: :friend_id,
     primary_key: :id
 
   has_many :sent_friend_requests, -> { where pending: true },
     class_name: :Friendship,
-    foreign_key: :friend_id,
+    foreign_key: :user_id,
     primary_key: :id
 
   has_many :all_friendships,
