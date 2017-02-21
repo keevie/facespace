@@ -60,11 +60,13 @@ class User < ApplicationRecord
     foreign_key: :wall_id,
     primary_key: :id
 
-  has_many :friendships, -> { where pending: true },
-    class_name
+  has_many :friendships, -> { where pending: false },
+    class_name: :Friendship,
+    foreign_key: :user_id,
+    primary_key: :id
 
 
-  has_many :unanswered_friend_requests, -> { where pending: true },
+  has_many :received_friend_requests, -> { where pending: true },
     class_name: :Friendship,
     foreign_key: :user_id,
     primary_key: :id
@@ -79,6 +81,10 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     primary_key: :id,
     dependent: :destroy
+
+  has_many :friends,
+    through: :friendships,
+    source: :friend
 
   def set_profile_url
     unless profile_url
