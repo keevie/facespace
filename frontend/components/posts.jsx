@@ -12,6 +12,7 @@ class Posts extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.renderTargetWall = this.renderTargetWall.bind(this);
 
   }
 
@@ -40,6 +41,17 @@ class Posts extends React.Component {
     );
   }
 
+  renderTargetWall (post) {
+    if (this.props.wallId !== post.author_id) {
+      return (
+        <div>
+          <i className="fa fa-caret-right" aria-hidden="true"></i>
+          <p>{this.props.wallFName + ' ' + this.props.wallLName}</p>
+        </div>
+      )
+    }
+  }
+
   renderPosts () {
     let postsArray = [];
     Object.keys(this.props.posts).forEach((post) => {
@@ -51,11 +63,19 @@ class Posts extends React.Component {
 
     return postsArray.map((post) => {
       return (
-        <div key={post.id}>
-          <p>{post.body}</p>
-          <img className='avatar' src={post.avatar}/>
-          <p>By {post.author_f_name + ' ' + post.author_l_name}</p>
-          <p>{moment(post.created_at).fromNow()}</p>
+        <div className='post' key={post.id}>
+          <header className='post-header'>
+            <img className='avatar' src={post.avatar}/>
+            <div id='post-info'>
+              <div id='top-row'>
+                <p>{post.author_f_name + ' ' + post.author_l_name}</p>
+              </div>
+              {this.renderTargetWall(post)}
+
+              <p>{moment(post.created_at).fromNow()}</p>
+            </div>
+          </header>
+          <article>{post.body}</article>
         </div>
       );
     });
