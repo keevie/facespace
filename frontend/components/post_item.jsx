@@ -49,7 +49,12 @@ class PostItem extends React.Component {
               }
             }
             aria-hidden="true"></i>
-          <button onClick={() => this.setState({edit: true})}>edit</button>
+          <button
+            onClick={() => {
+            this.setState({edit: true});
+            this.props.openModal(null);
+            }}
+          >edit</button>
           <button onClick={this.props.deletePost.bind(null, this.props.post)}>
             delete
           </button>
@@ -72,6 +77,7 @@ class PostItem extends React.Component {
       user_id: this.props.currentUser.id
     });
     this.setState({edit: false});
+    this.props.openModal(null);
   }
 
   renderEditOrBody () {
