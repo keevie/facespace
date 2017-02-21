@@ -17,7 +17,7 @@ class Api::FriendshipsController < ApplicationController
   end
 
   def reject
-    @friendship = Friendship.find_by(friend_id: friendship_params[:user_id] )
+    @friendship = Friendship.find_by(friend_id: friendship_params[:user_id])
     @friendship.destroy
     render :show
   end

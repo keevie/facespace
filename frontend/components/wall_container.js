@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import Wall from './wall';
 import { fetchUser } from '../actions/user_actions';
 import { fetchTimelinePosts } from '../actions/post_actions';
+import { sendFriendRequest } from '../actions/friendship_actions';
 
 const mapStateToProps = state => {
   return {
@@ -15,7 +16,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchUser: (profileUrl) => dispatch(fetchUser(profileUrl)),
-    fetchTimelinePosts: wallId => dispatch(fetchTimelinePosts(wallId))
+    fetchTimelinePosts: wallId => dispatch(fetchTimelinePosts(wallId)),
+    sendFriendRequest: friendship => dispatch(sendFriendRequest(friendship))
   };
 };
 

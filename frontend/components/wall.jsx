@@ -20,6 +20,10 @@ class Wall extends React.Component {
     this.ownWall = this.ownWall.bind(this);
     this.profileUrl = this.profileUrl.bind(this);
     this.coverUrl = this.coverUrl.bind(this);
+    this.renderFriendRequestButton = this.renderFriendRequestButton.bind(this);
+    this.renderChangeCoverButton = this.renderChangeCoverButton.bind(this);
+    this.renderChangeProfButton = this.renderChangeProfButton.bind(this);
+    this.sendFriendRequest = this.sendFriendRequest.bind(this);
   }
 
 
@@ -44,7 +48,7 @@ class Wall extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.params.profile_url !== this.props.params.profile_url) {
-      this.props.fetchUser(this.props.params.profile_url)
+      this.props.fetchUser(nextProps.params.profile_url)
         .then(() => this.setState({loading: false}));
       }
     }
@@ -61,6 +65,14 @@ class Wall extends React.Component {
     };
   }
 
+  sendFriendRequest (e) {
+    e.preventDefault();
+    this.props.sendFriendRequest({
+      user_id: this.props.session.currentUser.id,
+      friend_id: this.props.user.id
+    });
+  }
+
   renderFriendRequestButton() {
     if (this.ownWall()) {
       return null;
@@ -74,11 +86,40 @@ class Wall extends React.Component {
     //   );
     // }
     return (
-      <div id='add-friend'>
+      <div
+        onClick={this.sendFriendRequest}
+        id='add-friend'>
         <i className="fa fa-user-plus" aria-hidden="true"></i>
         Add Friend
       </div>
     );
+  }
+  renderChangeProfButton() {
+    if (this.ownWall()) {
+      return (
+        <div onClick={this.openModal('profModalisOpen')} id='edit-prof'>
+          <i className="fa fa-camera" aria-hidden="true"></i>
+        </div>
+      );
+    }
+    else {
+      return null;
+    }
+
+  }
+
+  renderChangeCoverButton() {
+    if (this.ownWall()) {
+      return (
+        <div onClick={this.openModal('coverModalisOpen')} id='edit-cover'>
+          <i className="fa fa-camera" aria-hidden="true"></i>
+        </div>
+      );
+    }
+    else {
+      return null;
+    }
+
   }
 
   render() {
@@ -89,9 +130,7 @@ class Wall extends React.Component {
       <section className='wall'>
         <div className='cover'>
           <img id='cover-photo' src={this.coverUrl()}/>
-          <div onClick={this.openModal('coverModalisOpen')} id='edit-cover'>
-            <i className="fa fa-camera" aria-hidden="true"></i>
-          </div>
+          {this.renderChangeCoverButton()}
 
           <ImgUploadModal
             type='coverModalisOpen'
@@ -109,9 +148,8 @@ class Wall extends React.Component {
 
           {this.renderFriendRequestButton()}
 
-          <div onClick={this.openModal('profModalisOpen')} id='edit-prof'>
-            <i className="fa fa-camera" aria-hidden="true"></i>
-          </div>
+          {this.renderChangeProfButton()}
+
 
           <ImgUploadModal
             type='profModalisOpen'
