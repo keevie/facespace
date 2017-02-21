@@ -87,16 +87,16 @@ class Wall extends React.Component {
     // }
     else if (this.props.friendState === 'pending') {
       return (
-        <div id='add-friend'>
+        <div className='add-friend' id='pending-friend-request'>
           <i className="fa fa-user-plus" aria-hidden="true" />
           Friend Request Sent
         </div>
-      )
+      );
     }
     return (
       <div
         onClick={this.sendFriendRequest}
-        id='add-friend'>
+        className='add-friend'>
         <i className="fa fa-user-plus" aria-hidden="true"></i>
         Add Friend
       </div>

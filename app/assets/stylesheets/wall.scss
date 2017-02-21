@@ -34,7 +34,7 @@
   left: 210px;
 }
 
-.wall #add-friend {
+.wall .add-friend {
   color: #4b4f56;
   background-color: #f6f7f9;
   position: absolute;
@@ -48,8 +48,12 @@
   top: 280px;
 }
 
-.wall #add-friend i {
+.wall .add-friend i {
   padding-right: 4px;
+}
+
+.wall #pending-friend-request {
+  left: 680px;
 }
 
 .wall #add-friend:hover {
