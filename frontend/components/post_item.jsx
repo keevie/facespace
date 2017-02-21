@@ -21,12 +21,19 @@ class PostItem extends React.Component {
     if (this.props.currentUser.id !== this.props.post.author_id) {
       return null;
     }
-    else if (!(this.state.dropDownOpen))  {
-      return null;
+    else if (!(this.props.modalIsOpen === `postDropDown-${this.props.post.id}`))  {
+      return (
+        <i className="fa fa-angle-down"
+          onClick={() => this.props.openModal(`postDropDown-${this.props.post.id}`)}
+          aria-hidden="true"></i>
+      );
     }
     else {
       return (
         <div>
+          <i className="fa fa-angle-down"
+            onClick={() => this.props.openModal(`postDropDown-${this.props.post.id}`)}
+            aria-hidden="true"></i>
           <button>edit</button>
           <button>delete</button>
         </div>
@@ -48,15 +55,11 @@ class PostItem extends React.Component {
 
             <p>{moment(this.props.post.created_at).fromNow()}</p>
           </div>
-          <i className="fa fa-angle-down"
-            onClick={this.toggleDropDown()}
-            aria-hidden="true"></i>
           {this.renderDropDown()}
         </header>
         <article>{this.props.post.body}</article>
       </div>
-    )
-
+    );
   }
 
 }

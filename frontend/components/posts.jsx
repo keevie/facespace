@@ -54,6 +54,8 @@ class Posts extends React.Component {
     return postsArray.map((post) => {
       return (
         <Post
+          openModal={this.props.openModal}
+          modalIsOpen={this.props.modalIsOpen}
           key={post.id}
           currentUser={this.props.currentUser}
           post={post}
