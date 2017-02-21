@@ -12,6 +12,6 @@ if user.sent_friend_requests.length > 0
     end
   end
 else
-  json.sent_friend_requests {}
+  json.sent_friend_requests({})
 end
-json.received_friend_requests
+json.received_friend_requests({})
