@@ -5,6 +5,7 @@ import { fetchTimelinePosts } from '../actions/post_actions';
 import { sendFriendRequest } from '../actions/friendship_actions';
 
 const mapStateToProps = state => {
+  debugger
   let friendState = false;
   if (state.friendships.sentFriendRequests[state.user.user.id]) {
     friendState = 'pending';
