@@ -28,6 +28,8 @@ class Posts extends React.Component {
   renderPostForm () {
     return (
       <form className='post-form' onSubmit={this.handleSubmit}>
+        <img className='avatar'
+          src={this.props.currentUser.profile_small}/>
         <textarea
           placeholder="What's on your mind?"
           value={this.state.body}
@@ -50,6 +52,7 @@ class Posts extends React.Component {
       return (
         <div key={post.id}>
           <p>{post.body}</p>
+          <img className='avatar' src={post.avatar}/>
           <p>By {post.author_f_name + ' ' + post.author_l_name}</p>
           <p>At {post.created_at}</p>
         </div>

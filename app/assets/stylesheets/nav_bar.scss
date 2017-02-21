@@ -3,6 +3,9 @@
   display: flex;
   padding: 10px;
   justify-content: space-around;
+  position: fixed;
+  width: 100%;
+  z-index: 12;
 }
 
 .navbar img {
