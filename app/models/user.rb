@@ -30,8 +30,20 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 8, allow_nil: true }
   validates :profile_url, uniqueness: true
 
-  has_attached_file :profile, default_url: 'missing.png'
-  has_attached_file :cover, default_url: 'missing.png'
+  has_attached_file :profile,
+    default_url: 'https://i.imgur.com/k3a5rMY.png',
+    styles: {
+      thumb: '25x25',
+      small: '40x40',
+      original: '165x165'
+    }
+
+  has_attached_file :cover,
+    default_url: 'https://i.imgur.com/iCs8Z4z.png',
+    styles: {
+      original: '845x320'
+    }
+
   validates_attachment_content_type :profile, content_type: /\Aimage\/.*\Z/
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
 

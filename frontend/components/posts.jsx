@@ -28,11 +28,11 @@ class Posts extends React.Component {
   renderPostForm () {
     return (
       <form className='post-form' onSubmit={this.handleSubmit}>
-        <input
+        <textarea
           placeholder="What's on your mind?"
           value={this.state.body}
           onChange={this.handleChange} />
-        <button>Submit</button>
+        <button>Post</button>
       </form>
     );
   }

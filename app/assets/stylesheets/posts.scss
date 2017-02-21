@@ -1,4 +1,6 @@
 .timeline-posts {
+  position: relative;
+  margin-left: auto;
   display: flex;
   flex-direction: column;
   width: 510px;
@@ -9,4 +11,34 @@
 
 .post-form {
   background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-form textarea {
+  height: 150px;
+  border-bottom: 1px solid #aaa;
+  font-size: 18px;
+  color: #5C6066
+}
+
+.post-form textarea:focus {
+  font-size: 24px;
+}
+
+.post-form button {
+  position: relative;
+  align-self: flex-end;
+  background-color: #4267b2;
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  padding: 0px 5px 0px 5px;
+  margin: 5px 20px 5px 5px;
+  border: 1px solid #29487d;
+  border-radius: 1px;
+}
+
+.post-form button:hover {
+  background-color: #3b5998;
 }
