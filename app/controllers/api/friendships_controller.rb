@@ -1,4 +1,4 @@
-class FriendsController < ApplicationController
+class Api::FriendshipsController < ApplicationController
   def create
     @friendship = Friendship.new(friend_params)
 

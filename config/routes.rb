@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     match '/newsfeed', to: 'posts#newsfeed', via: :get
     match '/timeline', to: 'posts#timeline', via: :get
+    get '/friendships/create', to: 'friendships#create'
+    get '/friendships/accept', to: 'friendships#accept'
+    get '/friendships/', to: 'friendships#accept'
   end
 
   get '*path', to: 'static_pages#root'
