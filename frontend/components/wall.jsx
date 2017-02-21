@@ -149,6 +149,7 @@ class Wall extends React.Component {
           <div id='prof-photo-container'>
             <img id='profile-photo' src={this.profileUrl()}/>
           </div>
+          {this.renderChangeProfButton()}
 
           <div id='cover-name'>
             {this.props.user.f_name + ' ' + this.props.user.l_name}
@@ -156,7 +157,6 @@ class Wall extends React.Component {
 
           {this.renderFriendRequestButton()}
 
-          {this.renderChangeProfButton()}
 
 
           <ImgUploadModal
