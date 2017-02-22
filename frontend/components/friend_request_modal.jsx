@@ -41,7 +41,10 @@ class FriendRequestModal extends React.Component {
 
     return friendReqArray.map((request) => {
       return (
-        <p>request</p>
+        <div key={request.requester_id}>
+          <img src={request.requester_avatar} />
+          <p>{request.requester_f_name + ' ' + request.requester_l_name}</p>
+        </div>
       );
     });
   }
