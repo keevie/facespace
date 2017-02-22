@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { sendFriendRequest, cancelFriendRequest, unFriend }
+import { sendFriendRequest, cancelFriendRequest, unFriend, acceptFriendRequest }
   from '../actions/friendship_actions';
 import { receiveOpenModal } from '../actions/modal_actions';
 
@@ -9,6 +9,9 @@ const mapStateToProps = state => {
   let friendState = false;
   if (state.friendships.sentFriendRequests[state.user.user.id]) {
     friendState = 'pending';
+  }
+  else if (state.friendships.receivedFriendRequests[state.user.user.id]) {
+    friendState = 'requested';
   }
   else if (state.friendships.friends[state.user.user.id]) {
     friendState = true;
@@ -24,6 +27,7 @@ const mapDispatchToProps = dispatch => {
     openModal: (modal) => dispatch(receiveOpenModal(modal)),
     sendFriendRequest: friendship => dispatch(sendFriendRequest(friendship)),
     cancelFriendRequest: friendship => dispatch(cancelFriendRequest(friendship)),
+    acceptFriendRequest: friendship => dispatch(acceptFriendRequest(friendship)),
     unFriend: friendship => dispatch(unFriend(friendship))
   };
 };

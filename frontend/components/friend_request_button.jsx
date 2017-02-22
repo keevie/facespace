@@ -6,6 +6,7 @@ class FriendRequestButton extends React.Component {
     this.sendFriendRequest = this.sendFriendRequest.bind(this);
     this.renderCancelDropdown = this.renderCancelDropdown.bind(this);
     this.renderUnfriendDropdown = this.renderUnfriendDropdown.bind(this);
+    this.renderAcceptDropdown = this.renderAcceptDropdown.bind(this);
   }
 
   sendFriendRequest (e) {
@@ -29,6 +30,28 @@ class FriendRequestButton extends React.Component {
               });
             }}>
             Cancel Friend Request
+          </button>
+        </div>
+      );
+    }
+    else {
+      return null;
+    }
+  }
+
+  renderAcceptDropdown() {
+    if (this.props.modalIsOpen === 'accept-friend-request') {
+      return (
+        <div id='friend-request-button-dropdown'>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              this.props.acceptFriendRequest({
+                user_id: this.props.friendId,
+                friend_id: this.props.userId
+              });
+            }}>
+            Accept Friend Request
           </button>
         </div>
       );
@@ -93,6 +116,22 @@ class FriendRequestButton extends React.Component {
         {this.renderCancelDropdown()}
       </div>
       );
+    }
+    else if (this.props.friendState === 'requested') {
+      return (
+        <div className='add-friend'
+          onClick={() => {
+              this.props.openModal('accept-friend-request');
+            }
+          }
+          id='pending-friend-request'>
+        <i className="fa fa-user-plus" aria-hidden="true" />
+        Requested
+        <i className="fa fa-caret-down" aria-hidden="true" />
+        {this.renderAcceptDropdown()}
+      </div>
+      );
+
     }
     return (
       <div
