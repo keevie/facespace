@@ -4,7 +4,6 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from './app_container';
 import Wall from './wall_container';
 
-
 const Root = ({ store }) => {
 
   const isLoggedIn = () => {

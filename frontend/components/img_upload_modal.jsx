@@ -3,8 +3,8 @@ import Modal from 'react-modal';
 
 const modalStyle = {
   overlay: {
-    position          :    'fixed',
-    top               :    '50%',
+    position          :    'absolute',
+    top               :    '100%',
     left              :    '50%',
     backgroundColor   :    'white',
     height            :    '400px',
@@ -36,7 +36,6 @@ class ImgUploadModal extends React.Component{
   }
 
   componentWillMount() {
-    Modal.setAppElement('body');
     if (this.props.type === 'profModalisOpen') {
       this.setState({titlebar: 'Upload a new profile picture'});
       this.setState({imageType: 'profile'});
@@ -124,10 +123,15 @@ class ImgUploadModal extends React.Component{
     return <img src={this.state.imageUrl}/>;
   }
 
+  getParent () {
+    return document.querySelector('.cover');
+  }
+
   render() {
 
     return (
       <Modal
+        parentSelector={this.getParent}
         className = 'image-upload'
         isOpen = {this.props.isOpen}
         style={modalStyle}
