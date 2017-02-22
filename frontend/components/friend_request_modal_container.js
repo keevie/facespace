@@ -1,17 +1,16 @@
 import { connect } from 'react-redux';
-import NavBar from './nav_bar';
-import { logout } from '../actions/session_actions';
+import FriendRequestModal from './friend_request_modal';
 import { receiveOpenModal } from '../actions/modal_actions';
 
 const mapStateToProps = state => {
   return {
-    session: state.session
+    session: state.session,
+    modalIsOpen: state.modalOpen
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    logout: () => dispatch(logout()),
     openModal: (modal) => dispatch(receiveOpenModal(modal))
   };
 };
@@ -19,4 +18,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NavBar);
+)(FriendRequestModal);

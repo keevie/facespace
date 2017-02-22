@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import FriendRequestModal from './friend_request_modal_container';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -24,8 +25,14 @@ class NavBar extends React.Component {
               </Link>
             </li>
             <li><a id='home-link' href='/'>Home</a></li>
-            <li><a href='/'> <img src={window.facespaceAssets.friends} /></a></li>
-            <li><a href='/'> <img src={window.facespaceAssets.notifications} /></a></li>
+            <li><a onClick={(e) =>{
+                    e.preventDefault();
+                    this.props.openModal('friend-requests');
+                   }
+                }>
+               <img src={window.facespaceAssets.friends} />
+            </a></li>
+            <li><a> <img src={window.facespaceAssets.notifications} /></a></li>
           </ul>
           <div className='log-out-container'>
             <i className="fa fa-caret-down"
@@ -33,6 +40,7 @@ class NavBar extends React.Component {
               aria-hidden="true"></i>
           </div>
         </div>
+        <FriendRequestModal />
 
       </section>
     );

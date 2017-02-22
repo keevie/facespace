@@ -1,5 +1,4 @@
 import React from 'react';
-import modal from 'react-modal';
 
 class FriendRequestButton extends React.Component {
   constructor (props) {
