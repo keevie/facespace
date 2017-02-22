@@ -30,7 +30,13 @@ class Api::FriendshipsController < ApplicationController
   end
 
   def destroy
-
+    @friendship = Friendship.find_by(friend_id: friendship_params[:friend_id],
+                                      user_id: friendship_params[:user_id])
+    @inversefriendship = Friendship.find_by(user_id: friendship_params[:friend_id],
+                                      friend_id: friendship_params[:user_id])
+    @friendship.destroy
+    @inversefriendship.destroy
+    render :show
   end
 
   def friendship_params

@@ -6,6 +6,7 @@ class FriendRequestButton extends React.Component {
     super(props);
     this.sendFriendRequest = this.sendFriendRequest.bind(this);
     this.renderCancelDropdown = this.renderCancelDropdown.bind(this);
+    this.renderUnfriendDropdown = this.renderUnfriendDropdown.bind(this);
   }
 
   sendFriendRequest (e) {
@@ -26,8 +27,8 @@ class FriendRequestButton extends React.Component {
               this.props.cancelFriendRequest({
                 user_id: this.props.userId,
                 friend_id: this.props.friendId
-              }
-            );}}>
+              });
+            }}>
             Cancel Friend Request
           </button>
         </div>
@@ -38,6 +39,28 @@ class FriendRequestButton extends React.Component {
     }
   }
 
+  renderUnfriendDropdown() {
+    if (this.props.modalIsOpen === 'unfriend-dropdown') {
+      return (
+        <div id='friend-request-button-dropdown'>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              this.props.unFriend({
+                user_id: this.props.userId,
+                friend_id: this.props.friendId
+              });
+              this.props.openModal(null);
+            }}>
+            Unfriend
+          </button>
+        </div>
+      );
+    }
+    else {
+      return null;
+    }
+  }
 
   render() {
     if (this.props.ownWall) {
@@ -45,9 +68,15 @@ class FriendRequestButton extends React.Component {
     }
     else if (this.props.friendState === true) {
       return (
-        <div className='add-friend'>
+        <div className='add-friend'
+          onClick={() => {
+              this.props.openModal('unfriend-dropdown');
+            }
+          }>
           <i className="fa fa-check" aria-hidden="true" />
           Friends
+          <i className="fa fa-caret-down" aria-hidden="true" />
+          {this.renderUnfriendDropdown()}
         </div>
       );
     }
