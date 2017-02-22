@@ -43,14 +43,14 @@ class FriendRequestButton extends React.Component {
     if (this.props.ownWall) {
       return null;
     }
-    //if friends already
-    // else if () {
-    //   return (
-    //     <div id='add-friend'>
-    //       <i className="fa fa-check" aria-hidden="true" />
-    //     </div>
-    //   );
-    // }
+    else if (this.props.friendState === true) {
+      return (
+        <div className='add-friend'>
+          <i className="fa fa-check" aria-hidden="true" />
+          Friends
+        </div>
+      );
+    }
     else if (this.props.friendState === 'pending') {
       return (
         <div className='add-friend'

@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
   let store;
   if (window.currentUser) {
-    const preloadedState = { 
+    const preloadedState = {
       session: { currentUser: window.currentUser },
       friendships: {
-        friends: {},
+        friends: window.currentUser.friends,
         sentFriendRequests: window.currentUser.sent_friend_requests,
         receivedFriendRequests: {}
       }

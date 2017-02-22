@@ -22,7 +22,10 @@ const friendshipsReducer = (state = defaultState, action) => {
     case RECEIVE_CURRENT_USER:
       return Object.assign(
         {}, state,
-        {sentFriendRequests: action.user.sent_friend_requests}
+        {
+          sentFriendRequests: action.user.sent_friend_requests,
+          friends: action.user.friends
+        }
       );
     default:
       return state;

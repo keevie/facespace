@@ -10,7 +10,9 @@ const mapStateToProps = state => {
   if (state.friendships.sentFriendRequests[state.user.user.id]) {
     friendState = 'pending';
   }
-  // if already friends set to true
+  else if (state.friendships.friends[state.user.user.id]) {
+    friendState = true;
+  }
   return {
     modalIsOpen: state.modalOpen,
     friendState
