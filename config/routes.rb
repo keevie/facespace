@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     post '/friendships/create', to: 'friendships#create'
     post '/friendships/accept', to: 'friendships#accept'
     post '/friendships/reject', to: 'friendships#reject'
+    post '/friendships/cancel', to: 'friendships#cancel'
   end
 
   get '*path', to: 'static_pages#root'

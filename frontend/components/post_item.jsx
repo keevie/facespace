@@ -36,16 +36,10 @@ class PostItem extends React.Component {
     }
     else {
       return (
-        <div>
+        <div onClick={(e) => e.stopPropagation()}>
           <i className="fa fa-angle-down"
             onClick={(e) => {
               this.props.openModal(`postDropDown-${this.props.post.id}`);
-              const modalOffSwitch = document.querySelector('#modalToggleOff');
-              const removeModal = () => {
-                this.props.openModal(null);
-                modalOffSwitch.removeEventListenter('click', removeModal);
-              };
-              modalOffSwitch.addEventListener('click', removeModal);
               }
             }
             aria-hidden="true"></i>

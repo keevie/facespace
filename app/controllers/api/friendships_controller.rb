@@ -22,6 +22,13 @@ class Api::FriendshipsController < ApplicationController
     render :show
   end
 
+  def cancel
+    @friendship = Friendship.find_by(friend_id: friendship_params[:friend_id],
+                                      user_id: friendship_params[:user_id])
+    @friendship.destroy
+    render :show
+  end
+
   def destroy
 
   end

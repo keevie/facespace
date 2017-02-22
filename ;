@@ -21,13 +21,13 @@ class FriendRequestButton extends React.Component {
       return (
         <div id='friend-request-button-dropdown'>
           <button
-            onClick={(e) => {
-              e.stopPropagation();
+            onClick={() => {
+              debugger
               this.props.cancelFriendRequest({
                 user_id: this.props.userId,
                 friend_id: this.props.friendId
               }
-            );}}>
+            )};}>
             Cancel Friend Request
           </button>
         </div>
@@ -54,8 +54,14 @@ class FriendRequestButton extends React.Component {
     else if (this.props.friendState === 'pending') {
       return (
         <div className='add-friend'
-          onClick={() => {
-              this.props.openModal('cancel-friend-request');
+          onClick={(e) => {
+            this.props.openModal('cancel-friend-request');
+            const modalOffSwitch = document.querySelector('#modalToggleOff');
+            const removeModal = () => {
+                this.props.openModal(null);
+                modalOffSwitch.removeEventListener('click', removeModal);
+              };
+            modalOffSwitch.addEventListener('click', removeModal);
             }
           }
           id='pending-friend-request'>
