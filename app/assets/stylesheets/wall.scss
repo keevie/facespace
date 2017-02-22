@@ -41,7 +41,7 @@
   font-family: Helvetica, Arial, sans-serif;
   font-size: 12px;
   font-weight: bold;
-  padding: 5px;
+  padding: 5px 1px 5px 1px;
   border-radius: 2px;
   z-index: 20;
   left: 730px;
@@ -50,14 +50,16 @@
 
 .wall .add-friend i {
   padding-right: 4px;
+  padding-left: 4px;
 }
 
 .wall #pending-friend-request {
   left: 680px;
 }
 
-.wall #add-friend:hover {
+.wall .add-friend:hover {
   background-color: #e9ebee;
+  cursor: pointer;
 }
 
 

@@ -2,8 +2,7 @@ import React from 'react';
 import WallNavBar from './wall_nav_bar';
 import ImgUploadModal from './img_upload_modal_container';
 import Posts from './posts_container';
-
-
+import FriendRequestButton from './friend_request_button_container';
 
 class Wall extends React.Component {
   constructor(props) {
@@ -20,10 +19,8 @@ class Wall extends React.Component {
     this.ownWall = this.ownWall.bind(this);
     this.profileUrl = this.profileUrl.bind(this);
     this.coverUrl = this.coverUrl.bind(this);
-    this.renderFriendRequestButton = this.renderFriendRequestButton.bind(this);
     this.renderChangeCoverButton = this.renderChangeCoverButton.bind(this);
     this.renderChangeProfButton = this.renderChangeProfButton.bind(this);
-    this.sendFriendRequest = this.sendFriendRequest.bind(this);
   }
 
 
@@ -65,43 +62,6 @@ class Wall extends React.Component {
     };
   }
 
-  sendFriendRequest (e) {
-    e.preventDefault();
-    this.props.sendFriendRequest({
-      user_id: this.props.session.currentUser.id,
-      friend_id: this.props.user.id
-    });
-  }
-
-  renderFriendRequestButton() {
-    if (this.ownWall()) {
-      return null;
-    }
-    //if friends already
-    // else if () {
-    //   return (
-    //     <div id='add-friend'>
-    //       <i className="fa fa-check" aria-hidden="true" />
-    //     </div>
-    //   );
-    // }
-    else if (this.props.friendState === 'pending') {
-      return (
-        <div className='add-friend' id='pending-friend-request'>
-          <i className="fa fa-user-plus" aria-hidden="true" />
-          Friend Request Sent
-        </div>
-      );
-    }
-    return (
-      <div
-        onClick={this.sendFriendRequest}
-        className='add-friend'>
-        <i className="fa fa-user-plus" aria-hidden="true"></i>
-        Add Friend
-      </div>
-    );
-  }
   renderChangeProfButton() {
     if (this.ownWall()) {
       return (
@@ -155,7 +115,12 @@ class Wall extends React.Component {
             {this.props.user.f_name + ' ' + this.props.user.l_name}
           </div>
 
-          {this.renderFriendRequestButton()}
+          <FriendRequestButton
+            ownWall={this.ownWall()}
+            userId={this.props.session.currentUser.id}
+            friendId={this.props.user.id}
+            sendFriendRequest={this.props.sendFriendRequest}
+            friendState={this.props.friendState}/>
 
 
 
