@@ -5,7 +5,8 @@ import { receiveOpenModal } from '../actions/modal_actions';
 const mapStateToProps = state => {
   return {
     session: state.session,
-    modalIsOpen: state.modalOpen
+    modalIsOpen: state.modalOpen,
+    requests: state.friendships.receivedFriendRequests
   };
 };
 

@@ -16,6 +16,17 @@ else
   json.sent_friend_requests({})
 end
 
+if user.received_friend_requests.length > 0
+  json.received_friend_requests do
+    user.received_friend_requests.each do |friend_request|
+      json.set! friend_request.user_id, friend_request
+    end
+  end
+else
+  json.received_friend_requests({})
+end
+
+json.test user.received_friend_requests
 
 if user.friendships.length > 0
   json.friends do

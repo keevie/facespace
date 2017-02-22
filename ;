@@ -22,7 +22,6 @@ class FriendRequestButton extends React.Component {
         <div id='friend-request-button-dropdown'>
           <button
             onClick={() => {
-              debugger
               this.props.cancelFriendRequest({
                 user_id: this.props.userId,
                 friend_id: this.props.friendId

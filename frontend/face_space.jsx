@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
       friendships: {
         friends: window.currentUser.friends,
         sentFriendRequests: window.currentUser.sent_friend_requests,
-        receivedFriendRequests: {}
+        receivedFriendRequests: window.currentUser.received_friend_requests
       }
     };
 
