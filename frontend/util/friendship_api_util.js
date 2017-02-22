@@ -21,3 +21,19 @@ export const unFriend = (friendship) => {
     data: {friendship}
   });
 };
+
+export const acceptFriend = (friendship) => {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/friendships/accept',
+    data: {friendship}
+  });
+};
+
+export const rejectFriend = (friendship) => {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/friendships/reject',
+    data: {friendship}
+  });
+};

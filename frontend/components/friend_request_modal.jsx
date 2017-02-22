@@ -1,7 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
 
-
 const modalStyle = {
   overlay: {
     width: '430px',
@@ -24,11 +23,35 @@ class FriendRequestModal extends React.Component {
   constructor (props) {
     super(props);
     this.renderFriendRequests = this.renderFriendRequests.bind(this);
+    this.handleAcceptFriendRequest = this.handleAcceptFriendRequest.bind(this);
   }
 
   getParent () {
     return document.querySelector('#friends-nav-button');
   }
+
+  handleAcceptFriendRequest (user_id) {
+    return (e) => {
+      e.preventDefault();
+      this.props.acceptFriendRequest({
+        user_id,
+        pending: false,
+        friend_id: this.props.session.currentUser.id
+      });
+    };
+  }
+
+  handleRejectFriendRequest (user_id) {
+    return (e) => {
+      e.preventDefault();
+      this.props.rejectFriendRequest({
+        user_id,
+        friend_id: this.props.session.currentUser.id
+      });
+    };
+  }
+
+
   renderFriendRequests () {
     let friendReqArray = [];
     Object.keys(this.props.requests).forEach((request) => {
@@ -39,11 +62,18 @@ class FriendRequestModal extends React.Component {
       return Date.parse(req1.created_at) - Date.parse(req2.created_at);
     });
 
+
     return friendReqArray.map((request) => {
       return (
         <div key={request.requester_id}>
           <img src={request.requester_avatar} />
           <p>{request.requester_f_name + ' ' + request.requester_l_name}</p>
+          <button onClick={this.handleAcceptFriendRequest(request.requester_id)}>
+            accept
+          </button>
+          <button onClick={this.handleRejectFriendRequest(request.requester_id)}>
+            reject
+          </button>
         </div>
       );
     });

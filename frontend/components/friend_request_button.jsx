@@ -107,4 +107,3 @@ class FriendRequestButton extends React.Component {
 }
 
 export default FriendRequestButton;
-

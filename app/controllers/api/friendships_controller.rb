@@ -10,14 +10,18 @@ class Api::FriendshipsController < ApplicationController
   end
 
   def accept
-    friend_request = Friendship.find_by(friend_id: friendship_params[:user_id] )
+    friend_request = Friendship.find_by(user_id: friendship_params[:user_id] )
     friend_request.update!(pending: false)
-    @friendship = Friendship.new(friendship_params)
+    @friendship = Friendship.create!(
+      user_id: friendship_params[:friend_id],
+      friend_id: friendship_params[:user_id],
+      pending: false
+    )
     render :show
   end
 
   def reject
-    @friendship = Friendship.find_by(friend_id: friendship_params[:user_id])
+    @friendship = Friendship.find_by(user_id: friendship_params[:user_id])
     @friendship.destroy
     render :show
   end
