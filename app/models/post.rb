@@ -26,6 +26,7 @@ class Post < ApplicationRecord
     foreign_key: :wall_id
 
   has_many :comments, as: :commentable
+
   has_many :top_level_comments, -> { where parent_id: nil },
     class_name: :Comment,
     primary_key: :id,

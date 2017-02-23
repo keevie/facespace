@@ -93,11 +93,19 @@ class PostItem extends React.Component {
       return <article>{this.props.post.body}</article>;
     }
   }
-  renderComments () {
-    debugger
+  renderComments (topLevelComments) {
     return (
       <section>
-        {this.props.post.comments}
+        {topLevelComments.map((comment) => {
+          return (
+            <div id='comment'>
+              <img src={this.props.post.comments[comment].author_avatar}/>
+              <p>{this.props.post.comments[comment].author_full_name}</p>
+              <p>{this.props.post.comments[comment].body}</p>
+              {this.renderComments(this.props.post.comments[comment].children)}
+            </div>
+          );
+        })}
       </section>
     );
   }
@@ -118,7 +126,7 @@ class PostItem extends React.Component {
           </div>
           {this.renderDropDown()}
           {this.renderEditOrBody()}
-          {this.renderComments()}
+          {this.renderComments(this.props.post.top_level_comments)}
         </header>
       </div>
     );
