@@ -6,9 +6,6 @@ class NewsFeed extends React.Component {
     this.props.fetchNewsFeedPosts();
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.props.fetchNewsFeedPosts();
-  }
 
   render () {
     return (
