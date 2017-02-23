@@ -101,7 +101,7 @@ class Splash extends React.Component {
       email: this.state.signupEmail,
       password: this.state.signupPassword,
       f_name: this.state.f_name,
-      l_name: this.state.f_name,
+      l_name: this.state.l_name,
       dob: this.state.dob
     };
     this.props.signup(signupInfo);

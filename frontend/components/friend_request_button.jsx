@@ -53,6 +53,16 @@ class FriendRequestButton extends React.Component {
             }}>
             Accept Friend Request
           </button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              this.props.rejectFriendRequest({
+                user_id: this.props.friendId,
+                friend_id: this.props.userId
+              });
+            }}>
+            Reject Friend Request
+          </button>
         </div>
       );
     }

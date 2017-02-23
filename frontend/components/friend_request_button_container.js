@@ -1,5 +1,11 @@
 import { connect } from 'react-redux';
-import { sendFriendRequest, cancelFriendRequest, unFriend, acceptFriendRequest }
+import {
+  sendFriendRequest,
+  cancelFriendRequest,
+  unFriend,
+  acceptFriendRequest,
+  rejectFriendRequest
+}
   from '../actions/friendship_actions';
 import { receiveOpenModal } from '../actions/modal_actions';
 
@@ -28,7 +34,8 @@ const mapDispatchToProps = dispatch => {
     sendFriendRequest: friendship => dispatch(sendFriendRequest(friendship)),
     cancelFriendRequest: friendship => dispatch(cancelFriendRequest(friendship)),
     acceptFriendRequest: friendship => dispatch(acceptFriendRequest(friendship)),
-    unFriend: friendship => dispatch(unFriend(friendship))
+    unFriend: friendship => dispatch(unFriend(friendship)),
+    rejectFriendRequest: friendship => dispatch(rejectFriendRequest(friendship))
   };
 };
 
