@@ -1,11 +1,11 @@
 import * as APIUtil from '../util/comment_api_util';
 
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
-export const REMOVE_COMMENT = 'RECEIVE_COMMENT';
+export const REMOVE_COMMENT = 'REMOVE_COMMENT';
 
 export const createComment = (comment) => {
   return (dispatch) => {
-    return APIUtil.createPost(comment)
+    return APIUtil.createComment(comment)
       .then(newComment => dispatch(receiveComment(newComment)));
   };
 };

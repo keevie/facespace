@@ -28,7 +28,7 @@ class Api::CommentsController < ApplicationController
     params.require(:comment).permit(:parent_id,
                                     :author_id,
                                     :commentable_id,
-                                    :commentable,
+                                    :commentable_type,
                                     :body)
   end
 end

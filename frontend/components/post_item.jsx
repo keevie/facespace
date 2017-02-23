@@ -6,7 +6,7 @@ class PostItem extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      edit: false,
+      editComment: false,
       body: this.props.post.body
     };
     this.handleChange = this.handleChange.bind(this);
@@ -95,6 +95,20 @@ class PostItem extends React.Component {
     }
   }
 
+  renderCommentEditOrBody (comment) {
+    if (this.state.editComment) {
+      return (
+        <CommentForm
+          edit={true}
+          parent_id={comment.parent_id}
+          commentable_id={comment.commentable_id}
+        />
+      );
+    }
+    else {
+      return <p>{comment.body}</p>;
+    }
+  }
 
   renderComments (topLevelComments) {
     return (
@@ -104,13 +118,18 @@ class PostItem extends React.Component {
             <div id='comment' key={comment.id}>
               <img src={comment.author_avatar}/>
               <p>{comment.author_full_name}</p>
-              <p>{comment.body}</p>
+              {this.renderCommentEditOrBody(comment)}
               <p>reply</p>
               <button onClick={this.props.deleteComment.bind(null, comment)}>
                 delete
               </button>
               {this.renderComments(this.props.post.comments.
                 filter((childComment) => comment.children.includes(childComment.id)))}
+                <CommentForm
+                  edit={false}
+                  parent_id={comment}
+                  commentable_id={this.props.post.id}
+                />
             </div>
           );
         })}
@@ -139,6 +158,11 @@ class PostItem extends React.Component {
           {this.renderDropDown()}
           {this.renderEditOrBody()}
           {this.renderComments(this.getTopLevelComments())}
+          <CommentForm
+            edit={false}
+            parent_id='nil'
+            commentable_id={this.props.post.id}
+          />
         </header>
       </div>
     );

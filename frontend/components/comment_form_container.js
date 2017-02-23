@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import CommentForm from './comment_form';
+import { createComment, updateComment } from '../actions/comment_actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -9,7 +10,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
+    createComment: (comment) => dispatch(createComment(comment)),
+    updateComment: (comment) => dispatch(updateComment(comment))
   };
 };
 
