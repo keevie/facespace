@@ -46,7 +46,8 @@ class Wall extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.params.profile_url !== this.props.params.profile_url) {
       this.props.fetchUser(nextProps.params.profile_url)
-        .then(() => this.setState({loading: false}));
+        .then(() => this.props.fetchTimelinePosts(this.props.user.id))
+          .then(() => this.setState({loading: false}));
       }
     }
 

@@ -5,13 +5,6 @@ import FriendRequestModal from './friend_request_modal_container';
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      rendered: false
-    };
-  }
-
-  componentDidMount() {
-    this.setState({rendered: true});
   }
 
   render() {
@@ -47,7 +40,7 @@ class NavBar extends React.Component {
               aria-hidden="true"></i>
           </div>
         </div>
-        { this.state.rendered && <FriendRequestModal /> }
+        <FriendRequestModal />
 
       </section>
     );

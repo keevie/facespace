@@ -2,9 +2,14 @@ import React from 'react';
 import Posts from './posts_container';
 
 class NewsFeed extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchNewsFeedPosts();
   }
+
+  componentWillReceiveProps(nextProps) {
+    this.props.fetchNewsFeedPosts();
+  }
+
   render () {
     return (
       <Posts
