@@ -28,5 +28,6 @@ class Comment < ApplicationRecord
   has_many :children,
     class_name: :Comment,
     primary_key: :id,
-    foreign_key: :parent_id
+    foreign_key: :parent_id,
+    dependent: :destroy
 end

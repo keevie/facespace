@@ -54,6 +54,9 @@ class Posts extends React.Component {
     return postsArray.map((post) => {
       return (
         <Post
+          deleteComment={this.props.deleteComment}
+          createComment={this.props.createComment}
+          updateComment={this.props.updateComment}
           openModal={this.props.openModal}
           modalIsOpen={this.props.modalIsOpen}
           deletePost={this.props.deletePost}

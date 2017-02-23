@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import CommentForm from './comment_form_container';
 
 class PostItem extends React.Component {
   constructor (props) {
@@ -93,21 +94,32 @@ class PostItem extends React.Component {
       return <article>{this.props.post.body}</article>;
     }
   }
+
+
   renderComments (topLevelComments) {
     return (
       <section>
         {topLevelComments.map((comment) => {
           return (
-            <div id='comment'>
-              <img src={this.props.post.comments[comment].author_avatar}/>
-              <p>{this.props.post.comments[comment].author_full_name}</p>
-              <p>{this.props.post.comments[comment].body}</p>
-              {this.renderComments(this.props.post.comments[comment].children)}
+            <div id='comment' key={comment.id}>
+              <img src={comment.author_avatar}/>
+              <p>{comment.author_full_name}</p>
+              <p>{comment.body}</p>
+              <p>reply</p>
+              <button onClick={this.props.deleteComment.bind(null, comment)}>
+                delete
+              </button>
+              {this.renderComments(this.props.post.comments.
+                filter((childComment) => comment.children.includes(childComment.id)))}
             </div>
           );
         })}
       </section>
     );
+  }
+
+  getTopLevelComments () {
+    return this.props.post.comments.filter((comment) => !(comment.parent_id));
   }
 
   render () {
@@ -126,7 +138,7 @@ class PostItem extends React.Component {
           </div>
           {this.renderDropDown()}
           {this.renderEditOrBody()}
-          {this.renderComments(this.props.post.top_level_comments)}
+          {this.renderComments(this.getTopLevelComments())}
         </header>
       </div>
     );
