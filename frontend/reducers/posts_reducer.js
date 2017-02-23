@@ -3,6 +3,24 @@ import { REMOVE_POST, RECEIVE_ALL_POSTS, RECEIVE_POST }
 import { RECEIVE_COMMENT, REMOVE_COMMENT }
   from '../actions/comment_actions';
 
+
+const insertOrReplace = (array, newEl) => {
+  let replaced = false;
+  let newArray = array.map((el) => {
+    if (el.id === newEl.id) {
+      replaced = true;
+      return newEl;
+    }
+    return el;
+  });
+  if (replaced) {
+    return newArray;
+  }
+  else {
+    return newArray.concat(newEl);
+  }
+};
+
 const postReducer = (state, action) => {
   switch(action.type) {
     case REMOVE_COMMENT:
@@ -18,7 +36,7 @@ const postReducer = (state, action) => {
     case RECEIVE_COMMENT:
       if (state.id === action.comment.commentable_id) {
         return Object.assign(
-        {}, state, {comments: state.comments.concat(action.comment)}
+        {}, state, {comments: insertOrReplace(state.comments, action.comment)}
       );
       }
       else {

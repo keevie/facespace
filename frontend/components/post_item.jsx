@@ -6,6 +6,7 @@ class PostItem extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
+      edit: false,
       editComment: false,
       body: this.props.post.body
     };
@@ -99,7 +100,10 @@ class PostItem extends React.Component {
     if (this.state.editComment) {
       return (
         <CommentForm
+          closeEdit={() => this.setState({editComment: false})}
           edit={true}
+          id={comment.id}
+          body={comment.body}
           parent_id={comment.parent_id}
           commentable_id={comment.commentable_id}
         />
@@ -123,10 +127,19 @@ class PostItem extends React.Component {
               <button onClick={this.props.deleteComment.bind(null, comment)}>
                 delete
               </button>
+
+              <button onClick={() => {
+                this.setState({editComment: true});
+              }}>
+                edit
+              </button>
+
               {this.renderComments(this.props.post.comments.
                 filter((childComment) => comment.children.includes(childComment.id)))}
                 <CommentForm
+                  closeEdit={() => this.setState({editComment: false})}
                   edit={false}
+                  body=''
                   parent_id={comment}
                   commentable_id={this.props.post.id}
                 />
@@ -159,8 +172,10 @@ class PostItem extends React.Component {
           {this.renderEditOrBody()}
           {this.renderComments(this.getTopLevelComments())}
           <CommentForm
+            closeEdit={() => this.setState({editComment: false})}
             edit={false}
             parent_id='nil'
+            body=''
             commentable_id={this.props.post.id}
           />
         </header>

@@ -4,7 +4,7 @@ class CommentForm extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      body: '',
+      body: this.props.body,
       parent_id: this.props.parent_id,
       author_id: this.props.currentUser.id,
       commentable_id: this.props.commentable_id,
@@ -22,12 +22,14 @@ class CommentForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     if (this.props.edit) {
-      this.props.updateComment(this.state);
+      let newState = Object.assign({}, this.state, {id: this.props.id});
+      this.props.updateComment(newState);
     }
     else {
       this.props.createComment(this.state);
     }
     this.setState({body: ''});
+    this.props.closeEdit();
   }
 
   render () {

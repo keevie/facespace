@@ -13,7 +13,7 @@ export const deleteComment = (comment) => {
   });
 };
 
-export const updatePost = (comment) => {
+export const updateComment = (comment) => {
   return $.ajax({
     method: 'PATCH',
     url: `api/comments/${comment.id}`,
