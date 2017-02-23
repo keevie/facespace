@@ -18,6 +18,13 @@ export const fetchTimelinePosts = (wallId) => {
   };
 };
 
+export const fetchNewsFeedPosts = () => {
+  return (dispatch) => {
+    return APIUtil.fetchNewsFeedPosts()
+      .then(posts => dispatch(receivePosts(posts)));
+  };
+};
+
 export const deletePost = (post) => {
   return (dispatch) => {
     return APIUtil.deletePost(post)

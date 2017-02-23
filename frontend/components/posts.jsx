@@ -61,7 +61,9 @@ class Posts extends React.Component {
           key={post.id}
           currentUser={this.props.currentUser}
           post={post}
-          target_name={this.props.wallFName + ' ' + this.props.wallLName}/>
+          target_name={
+            post.wall_f_name + ' ' + post.wall_l_name
+          }/>
       );
     });
   }

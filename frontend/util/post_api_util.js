@@ -6,6 +6,13 @@ export const fetchTimelinePosts = (wallId) => {
   });
 };
 
+export const fetchNewsFeedPosts = () => {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/newsfeed'
+  });
+};
+
 export const createPost = (post) => {
   return $.ajax({
     method: 'POST',

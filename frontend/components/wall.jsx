@@ -136,10 +136,7 @@ class Wall extends React.Component {
 
 
         <Posts posts={this.props.posts}
-          wallFName={this.props.user.f_name}
-          wallLName={this.props.user.l_name}
           wallId={this.props.user.id}/>
-
       </section>
     );
   }
