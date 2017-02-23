@@ -23,14 +23,22 @@ class Api::PostsController < ApplicationController
   def newsfeed
     friend_ids = current_user.friends.map {|friend| friend.id}
     friend_ids << current_user.id
-    @posts = Post.where("user_id IN (?)", friend_ids).includes(:author).includes(:wall)
+    @posts = Post.where("user_id IN (?)", friend_ids)
+      .includes(:author)
+      .includes(:wall)
+      .includes(:comments)
+      .includes(:comment_authors)
     #oh boy this should not be called timeline
     render :timeline
   end
 
   def timeline
     wall = User.find_by(id: params[:wall_id])
-    @posts = wall.posts.includes(:author).includes(:wall)
+    @posts = wall.posts
+      .includes(:author)
+      .includes(:wall)
+      .includes(:comments)
+      .includes(:comment_authors)
     render :timeline
   end
 

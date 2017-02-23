@@ -10,6 +10,7 @@ class PostItem extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.renderComments = this.renderComments.bind(this);
   }
 
   renderTargetWall (post) {
@@ -92,6 +93,14 @@ class PostItem extends React.Component {
       return <article>{this.props.post.body}</article>;
     }
   }
+  renderComments () {
+    debugger
+    return (
+      <section>
+        {this.props.post.comments}
+      </section>
+    );
+  }
 
   render () {
     return (
@@ -109,6 +118,7 @@ class PostItem extends React.Component {
           </div>
           {this.renderDropDown()}
           {this.renderEditOrBody()}
+          {this.renderComments()}
         </header>
       </div>
     );

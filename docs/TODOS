@@ -1,0 +1,6 @@
+Friendship validations:
+  prevent from adding friend
+  when friend req is cancelled
+
+Pusher
+  for friendships, posts
