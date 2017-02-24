@@ -34,7 +34,11 @@ class CommentForm extends React.Component {
 
   render () {
     return (
-      <form className='comment-form' onSubmit={this.handleSubmit}>
+      <form
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+        className='comment-form' onSubmit={this.handleSubmit}>
         <img className='avatar'
           src={this.props.currentUser.profile_small}/>
         <input
