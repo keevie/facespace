@@ -9,9 +9,11 @@ class NewsFeed extends React.Component {
 
   render () {
     return (
-      <Posts
-        wallId={this.props.session.currentUser.id}
-        posts={this.props.posts}/>
+      <section className='news-feed'>
+        <Posts
+          wallId={this.props.session.currentUser.id}
+          posts={this.props.posts}/>
+      </section>
     );
   }
 }

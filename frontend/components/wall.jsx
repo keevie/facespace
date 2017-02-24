@@ -3,6 +3,8 @@ import WallNavBar from './wall_nav_bar';
 import ImgUploadModal from './img_upload_modal_container';
 import Posts from './posts_container';
 import FriendRequestButton from './friend_request_button_container';
+import About from './about';
+import WallFriends from './wall_friends';
 
 class Wall extends React.Component {
   constructor(props) {
@@ -134,10 +136,19 @@ class Wall extends React.Component {
         </div>
 
         <WallNavBar />
+        <About
+          location={this.props.user.location}
+          dob={this.props.user.dob}
+        />
+        <WallFriends
+          friends={this.props.session.currentUser.friends}
+        />
 
+        <section className='timeline-posts'>
+          <Posts posts={this.props.posts}
+            wallId={this.props.user.id}/>
+        </section>
 
-        <Posts posts={this.props.posts}
-          wallId={this.props.user.id}/>
       </section>
     );
   }

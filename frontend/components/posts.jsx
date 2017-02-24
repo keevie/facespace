@@ -29,13 +29,21 @@ class Posts extends React.Component {
   renderPostForm () {
     return (
       <form className='post-form' onSubmit={this.handleSubmit}>
-        <img className='avatar'
-          src={this.props.currentUser.profile_small}/>
-        <textarea
-          placeholder="What's on your mind?"
-          value={this.state.body}
-          onChange={this.handleChange} />
-        <button>Post</button>
+        <div className='overbar'>
+          <i className="fa fa-pencil" aria-hidden="true"></i>
+          <p>Status</p>
+        </div>
+        <div className='post-form-middle'>
+          <img className='avatar'
+            src={this.props.currentUser.profile_small}/>
+          <textarea
+            placeholder="What's on your mind?"
+            value={this.state.body}
+            onChange={this.handleChange} />
+        </div>
+        <div className='underbar'>
+          <button>Post</button>
+        </div>
       </form>
     );
   }
@@ -72,10 +80,10 @@ class Posts extends React.Component {
 
   render () {
     return (
-      <section className='timeline-posts'>
+      <div>
         {this.renderPostForm()}
         {this.renderPosts()}
-      </section>
+      </div>
     );
   }
 }

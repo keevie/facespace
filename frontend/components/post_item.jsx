@@ -18,7 +18,7 @@ class PostItem extends React.Component {
   renderTargetWall (post) {
     if (post.wall_id !== post.author_id) {
       return (
-        <div>
+        <div id='target-wall'>
           <i className="fa fa-caret-right" aria-hidden="true"></i>
           <p>{this.props.target_name}</p>
         </div>
@@ -92,7 +92,11 @@ class PostItem extends React.Component {
       );
     }
     else {
-      return <article>{this.props.post.body}</article>;
+      return (
+        <article className='post-body'>
+          {this.props.post.body}
+        </article>
+      );
     }
   }
 
@@ -114,35 +118,56 @@ class PostItem extends React.Component {
     }
   }
 
+  renderCommentEditAndDeleteButtons(comment) {
+    if (comment.author_id !== this.props.currentUser.id) {
+      return null;
+    }
+    else {
+      return (
+        <div>
+        <button onClick={this.props.deleteComment.bind(null, comment)}>
+          delete
+        </button>
+
+        <button onClick={() => {
+          this.setState({editComment: true});
+        }}>
+        edit
+        </button>
+        </div>
+      );
+    }
+  }
+
   renderComments (topLevelComments) {
     return (
-      <section>
+      <section className='comments'>
         {topLevelComments.map((comment) => {
           return (
             <div id='comment' key={comment.id}>
               <img src={comment.author_avatar}/>
-              <p>{comment.author_full_name}</p>
-              {this.renderCommentEditOrBody(comment)}
-              <p>reply</p>
-              <button onClick={this.props.deleteComment.bind(null, comment)}>
-                delete
-              </button>
+              <div id='comment-not-avatar'>
+                <div id='comment-topline'>
+                  <p id='comment-author'>{comment.author_full_name}</p>
+                  {this.renderCommentEditOrBody(comment)}
+                  {this.renderCommentEditAndDeleteButtons(comment)}
 
-              <button onClick={() => {
-                this.setState({editComment: true});
-              }}>
-                edit
-              </button>
-
-              {this.renderComments(this.props.post.comments.
-                filter((childComment) => comment.children.includes(childComment.id)))}
-                <CommentForm
-                  closeEdit={() => this.setState({editComment: false})}
-                  edit={false}
-                  body=''
-                  parent_id={comment}
-                  commentable_id={this.props.post.id}
-                />
+                  <div id='comment-bottomline'>
+                    <button>
+                      reply
+                    </button>
+                    {this.renderComments(this.props.post.comments.
+                      filter((childComment) => comment.children.includes(childComment.id)))}
+                      <CommentForm
+                        closeEdit={() => this.setState({editComment: false})}
+                        edit={false}
+                        body=''
+                        parent_id={comment}
+                        commentable_id={this.props.post.id}
+                      />
+                  </div>
+                </div>
+              </div>
             </div>
           );
         })}
@@ -158,17 +183,20 @@ class PostItem extends React.Component {
     return (
       <div className='post' key={this.props.post.id}>
         <header className='post-header'>
+          <div id='avatar-and-post-info'>
           <img className='avatar' src={this.props.post.avatar}/>
-          <div id='post-info'>
-            <div id='top-row'>
-              <p>{this.props.post.author_f_name + ' '
-                  + this.props.post.author_l_name}</p>
-            </div>
-            {this.renderTargetWall(this.props.post)}
+            <div id='post-info'>
+              <div id='top-row'>
+                <p>{this.props.post.author_f_name + ' '
+                    + this.props.post.author_l_name}</p>
+              {this.renderTargetWall(this.props.post)}
+              </div>
 
-            <p>{moment(this.props.post.created_at).fromNow()}</p>
+              <p id='post-time-ago'>{moment(this.props.post.created_at).fromNow()}</p>
+            </div>
           </div>
           {this.renderDropDown()}
+        </header>
           {this.renderEditOrBody()}
           {this.renderComments(this.getTopLevelComments())}
           <CommentForm
@@ -178,7 +206,6 @@ class PostItem extends React.Component {
             body=''
             commentable_id={this.props.post.id}
           />
-        </header>
       </div>
     );
   }

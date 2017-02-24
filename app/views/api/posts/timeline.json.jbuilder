@@ -20,6 +20,7 @@
       json.body comment.body
       json.parent_id comment.parent_id
       json.author_full_name comment.author.f_name + ' ' + comment.author.l_name
+      json.author_id comment.author.id
       json.author_avatar asset_path(comment.author.profile(:small))
       json.children comment.child_ids
       json.created_at comment.created_at
