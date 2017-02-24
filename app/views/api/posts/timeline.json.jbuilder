@@ -8,9 +8,11 @@
     json.author_f_name author.f_name
     json.author_l_name author.l_name
     json.author_id author.id
+    json.author_link author.profile_url
     json.wall_id post.wall_id
     json.wall_f_name wall.f_name
     json.wall_l_name wall.l_name
+    json.wall_link wall.profile_url
     json.id post.id
     json.avatar asset_path(author.profile(:small))
     json.comments comments do |comment|

@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
+import { Link } from 'react-router';
 
 const modalStyle = {
   overlay: {
@@ -65,13 +66,19 @@ class FriendRequestModal extends React.Component {
 
     return friendReqArray.map((request) => {
       return (
-        <div key={request.requester_id}>
-          <img src={request.requester_avatar} />
-          <p>{request.requester_f_name + ' ' + request.requester_l_name}</p>
-          <button onClick={this.handleAcceptFriendRequest(request.requester_id)}>
+        <div className='friend-req' key={request.requester_id}>
+          <img className='friend-req-avatar' src={request.requester_avatar} />
+          <Link to={request.requester_link}>
+            <p>{request.requester_f_name + ' ' + request.requester_l_name}</p>
+          </Link>
+          <button
+            className='friend-req-button'
+            onClick={this.handleAcceptFriendRequest(request.requester_id)}>
             accept
           </button>
-          <button onClick={this.handleRejectFriendRequest(request.requester_id)}>
+          <button
+            className='friend-req-button'
+            onClick={this.handleRejectFriendRequest(request.requester_id)}>
             reject
           </button>
         </div>

@@ -21,6 +21,7 @@ if user.received_friend_requests.length > 0
     user.received_friend_requests.each do |friend_request|
       json.set! friend_request.user_id do
         json.requester_id friend_request.user_id
+        json.requester_link User.find_by(id: friend_request.user_id).profile_url
         json.requester_avatar asset_path(User.find_by(id: friend_request.user_id).profile(:small))
         json.requester_f_name User.find_by(id: friend_request.user_id).f_name
         json.requester_l_name User.find_by(id: friend_request.user_id).l_name

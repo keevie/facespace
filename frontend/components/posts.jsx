@@ -71,6 +71,7 @@ class Posts extends React.Component {
           key={post.id}
           currentUser={this.props.currentUser}
           post={post}
+          target_link={post.wall_link}
           target_name={
             post.wall_f_name + ' ' + post.wall_l_name
           }/>

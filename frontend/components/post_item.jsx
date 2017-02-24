@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import CommentForm from './comment_form_container';
+import { Link } from 'react-router';
 
 class PostItem extends React.Component {
   constructor (props) {
@@ -20,7 +21,9 @@ class PostItem extends React.Component {
       return (
         <div id='target-wall'>
           <i className="fa fa-caret-right" aria-hidden="true"></i>
-          <p>{this.props.target_name}</p>
+          <Link to={this.props.target_link}>
+            <p>{this.props.target_name}</p>
+          </Link>
         </div>
       );
     }
@@ -120,21 +123,40 @@ class PostItem extends React.Component {
   }
 
   renderCommentEditAndDeleteButtons(comment) {
+    const renderButtons = () => {
+      return (
+        <div>
+          <button onClick={this.props.deleteComment.bind(null, comment)}>
+            delete
+          </button>
+
+          <button onClick={() => {
+            this.setState({editComment: true});
+          }}>
+            edit
+          </button>
+        </div>
+      );
+    };
     if (comment.author_id !== this.props.currentUser.id) {
       return null;
     }
     else {
       return (
         <div>
-        <button onClick={this.props.deleteComment.bind(null, comment)}>
-          delete
-        </button>
+          <i
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              this.props.openModal(`commentEditDelete-${comment.id}`);}
+            }
+            className="fa fa-pencil" aria-hidden="true">
+          </i>
 
-        <button onClick={() => {
-          this.setState({editComment: true});
-        }}>
-        edit
-        </button>
+          {
+            this.props.modalIsOpen === `commentEditDelete-${comment.id}` &&
+              renderButtons()
+          }
         </div>
       );
     }
@@ -198,8 +220,10 @@ class PostItem extends React.Component {
           <img className='avatar' src={this.props.post.avatar}/>
             <div id='post-info'>
               <div id='top-row'>
+                <Link to={this.props.post.author_link}>
                 <p>{this.props.post.author_f_name + ' '
                     + this.props.post.author_l_name}</p>
+                </Link>
               {this.renderTargetWall(this.props.post)}
               </div>
 
