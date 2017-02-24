@@ -107,6 +107,7 @@ class PostItem extends React.Component {
           closeEdit={() => this.setState({editComment: false})}
           edit={true}
           id={comment.id}
+          openModal={this.props.openModal}
           body={comment.body}
           parent_id={comment.parent_id}
           commentable_id={comment.commentable_id}
@@ -141,7 +142,7 @@ class PostItem extends React.Component {
 
   renderComments (topLevelComments) {
     return (
-      <section className='comments'>
+      <section>
         {topLevelComments.map((comment) => {
           return (
             <div id='comment' key={comment.id}>
@@ -153,18 +154,28 @@ class PostItem extends React.Component {
                   {this.renderCommentEditAndDeleteButtons(comment)}
 
                   <div id='comment-bottomline'>
-                    <button>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        this.props.openModal(`commentReply-${comment.id}`)}
+                      }
+                    >
                       reply
                     </button>
                     {this.renderComments(this.props.post.comments.
                       filter((childComment) => comment.children.includes(childComment.id)))}
+
+                      {this.props.modalIsOpen === `commentReply-${comment.id}` &&
                       <CommentForm
                         closeEdit={() => this.setState({editComment: false})}
                         edit={false}
                         body=''
                         parent_id={comment}
+                        openModal={this.props.openModal}
                         commentable_id={this.props.post.id}
                       />
+                      }
                   </div>
                 </div>
               </div>
@@ -198,14 +209,17 @@ class PostItem extends React.Component {
           {this.renderDropDown()}
         </header>
           {this.renderEditOrBody()}
+        <section className='comments'>
           {this.renderComments(this.getTopLevelComments())}
           <CommentForm
             closeEdit={() => this.setState({editComment: false})}
             edit={false}
+            openModal={this.props.openModal}
             parent_id='nil'
             body=''
             commentable_id={this.props.post.id}
           />
+        </section>
       </div>
     );
   }

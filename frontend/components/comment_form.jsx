@@ -30,6 +30,7 @@ class CommentForm extends React.Component {
     }
     this.setState({body: ''});
     this.props.closeEdit();
+    this.props.openModal(null);
   }
 
   render () {
