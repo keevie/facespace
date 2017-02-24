@@ -3,10 +3,41 @@
   font-size: 14px;
   display: flex;
   align-items: center;
+  margin: 10px 0px 10px 0px;
+  border-top: 1px solid #aaa;
+  padding: 10px 0px 10px 0px;
+}
+
+#friend-request-title {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .friend-req a{
   color: #365899;
   font-weight: bold;
   font-size: 14px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.friend-req .friend-req-avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.friend-req button {
+  background-color: #4267b2;
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  padding: 0px 5px 0px 5px;
+  margin: 0px 5px 0px 5px;
+  border: 1px solid #29487d;
+  border-radius: 1px;
+}
+
+.friend-req button:hover {
+  background-color: #3b5998;
 }

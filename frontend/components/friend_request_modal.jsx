@@ -93,7 +93,7 @@ class FriendRequestModal extends React.Component {
         parentSelector={this.getParent}
         isOpen = {this.props.modalIsOpen === 'friend-requests'}
         contentLabel=''>
-        Friend Requests
+        <h1 id='friend-request-title'>Friend Requests</h1>
         {this.renderFriendRequests()}
       </Modal>
     );

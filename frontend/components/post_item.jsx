@@ -7,8 +7,6 @@ class PostItem extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      edit: false,
-      editComment: false,
       body: this.props.post.body
     };
     this.handleChange = this.handleChange.bind(this);
@@ -54,8 +52,7 @@ class PostItem extends React.Component {
             aria-hidden="true"></i>
           <button
             onClick={() => {
-            this.setState({edit: true});
-            this.props.openModal(null);
+            this.props.openModal(`editPost-${this.props.post.id}`);
             }}
           >edit</button>
           <button onClick={this.props.deletePost.bind(null, this.props.post)}>
@@ -79,12 +76,11 @@ class PostItem extends React.Component {
       wall_id: this.props.post.wall_id,
       user_id: this.props.currentUser.id
     });
-    this.setState({edit: false});
     this.props.openModal(null);
   }
 
   renderEditOrBody () {
-    if (this.state.edit) {
+    if (this.props.modalIsOpen === `editPost-${this.props.post.id}`) {
       return (
         <form onSubmit={this.handleSubmit}>
           <textarea
@@ -104,10 +100,9 @@ class PostItem extends React.Component {
   }
 
   renderCommentEditOrBody (comment) {
-    if (this.state.editComment) {
+    if (this.props.modalIsOpen === `editComment-${comment.id}`) {
       return (
         <CommentForm
-          closeEdit={() => this.setState({editComment: false})}
           edit={true}
           id={comment.id}
           openModal={this.props.openModal}
@@ -130,8 +125,9 @@ class PostItem extends React.Component {
             delete
           </button>
 
-          <button onClick={() => {
-            this.setState({editComment: true});
+          <button onClick={(e) => {
+            e.stopPropagation();
+            this.props.openModal(`editComment-${comment.id}`);
           }}>
             edit
           </button>
@@ -176,31 +172,29 @@ class PostItem extends React.Component {
                   </Link>
                   {this.renderCommentEditOrBody(comment)}
                   {this.renderCommentEditAndDeleteButtons(comment)}
+                </div>
+                <div id='comment-bottomline'>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      this.props.openModal(`commentReply-${comment.id}`);}
+                    }
+                  >
+                    reply
+                  </button>
+                  {this.renderComments(this.props.post.comments.
+                    filter((childComment) => comment.children.includes(childComment.id)))}
 
-                  <div id='comment-bottomline'>
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        this.props.openModal(`commentReply-${comment.id}`);}
-                      }
-                    >
-                      reply
-                    </button>
-                    {this.renderComments(this.props.post.comments.
-                      filter((childComment) => comment.children.includes(childComment.id)))}
-
-                      {this.props.modalIsOpen === `commentReply-${comment.id}` &&
-                      <CommentForm
-                        closeEdit={() => this.setState({editComment: false})}
-                        edit={false}
-                        body=''
-                        parent_id={comment}
-                        openModal={this.props.openModal}
-                        commentable_id={this.props.post.id}
-                      />
-                      }
-                  </div>
+                    {this.props.modalIsOpen === `commentReply-${comment.id}` &&
+                    <CommentForm
+                      edit={false}
+                      body=''
+                      parent_id={comment}
+                      openModal={this.props.openModal}
+                      commentable_id={this.props.post.id}
+                    />
+                    }
                 </div>
               </div>
             </div>
@@ -238,7 +232,6 @@ class PostItem extends React.Component {
         <section className='comments'>
           {this.renderComments(this.getTopLevelComments())}
           <CommentForm
-            closeEdit={() => this.setState({editComment: false})}
             edit={false}
             openModal={this.props.openModal}
             parent_id='nil'

@@ -146,7 +146,7 @@ class ImgUploadModal extends React.Component{
         <section className='uploadForm'>
           <form onSubmit={this.sendImage(this.state.imageType)}>
             <input onChange={this.updateFile(this.state.imageType)} type='file'/>
-            <button>Submit</button>
+            <button id='submit-img-button'>Submit</button>
           </form>
 
           { this.state.imageUrl && this.renderPreview()}

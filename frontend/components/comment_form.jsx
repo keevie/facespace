@@ -29,7 +29,6 @@ class CommentForm extends React.Component {
       this.props.createComment(this.state);
     }
     this.setState({body: ''});
-    this.props.closeEdit();
     this.props.openModal(null);
   }
 
