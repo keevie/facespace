@@ -171,7 +171,9 @@ class PostItem extends React.Component {
               <img src={comment.author_avatar}/>
               <div id='comment-not-avatar'>
                 <div id='comment-topline'>
-                  <p id='comment-author'>{comment.author_full_name}</p>
+                  <Link to={comment.author_link}>
+                    <p id='comment-author'>{comment.author_full_name}</p>
+                  </Link>
                   {this.renderCommentEditOrBody(comment)}
                   {this.renderCommentEditAndDeleteButtons(comment)}
 
@@ -180,7 +182,7 @@ class PostItem extends React.Component {
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
-                        this.props.openModal(`commentReply-${comment.id}`)}
+                        this.props.openModal(`commentReply-${comment.id}`);}
                       }
                     >
                       reply
