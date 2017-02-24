@@ -145,11 +145,12 @@
   background-color: #f6f7f9;
 }
 
-#comment {
-  display: flex;
+.comment {
+  margin: 10px 0px 10px 0px;
 }
 
-#comment-author {
+
+.comment-author {
   padding-left: 5px;
   padding-right: 5px;
   display: flex;
@@ -158,17 +159,17 @@
   font-size: 12px;
 }
 
-#comment-topline {
+.comment-topline {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
-#comment-bottomline {
+.comment-bottomline {
   display: flex;
   margin-top: 5px;
 }
 
-#comment-not-avatar {
+.comment-not-avatar {
   display: flex;
   flex-direction: column;
 }
@@ -198,4 +199,22 @@
 .comment-form .avatar {
   width: 32px;
   height: 32px;
+}
+
+.comment-heading {
+  display: flex;
+}
+
+.comment-topline i {
+  // margin-left: 290px;
+  margin-left: auto;
+  color: #aaa;
+}
+
+.comment button {
+  color: #365899;
+}
+
+.child-comments {
+  margin-left: 10px;
 }

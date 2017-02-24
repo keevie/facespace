@@ -21,6 +21,19 @@ const insertOrReplace = (array, newEl) => {
   }
 };
 
+const addSelfToParentChildren = (comment, comments) => {
+  return comments.map((el) => {
+    // debugger
+    if (el.id === comment.parent_id) {
+      el.children = el.children.concat(comment.id);
+      return el;
+    }
+    else {
+      return el;
+    }
+  });
+};
+
 const postReducer = (state, action) => {
   switch(action.type) {
     case REMOVE_COMMENT:
@@ -36,7 +49,8 @@ const postReducer = (state, action) => {
     case RECEIVE_COMMENT:
       if (state.id === action.comment.commentable_id) {
         return Object.assign(
-        {}, state, {comments: insertOrReplace(state.comments, action.comment)}
+          {}, state,
+          {comments: addSelfToParentChildren(action.comment, insertOrReplace(state.comments, action.comment))}
       );
       }
       else {

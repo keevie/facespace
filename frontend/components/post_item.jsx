@@ -163,17 +163,22 @@ class PostItem extends React.Component {
       <section>
         {topLevelComments.map((comment) => {
           return (
-            <div id='comment' key={comment.id}>
+            <div className='comment' key={comment.id}>
+              <header className='comment-heading'>
               <img src={comment.author_avatar}/>
-              <div id='comment-not-avatar'>
-                <div id='comment-topline'>
-                  <Link to={comment.author_link}>
-                    <p id='comment-author'>{comment.author_full_name}</p>
-                  </Link>
-                  {this.renderCommentEditOrBody(comment)}
-                  {this.renderCommentEditAndDeleteButtons(comment)}
+              <div className='comment-not-avatar'>
+                <div className='comment-topline'>
+                  <div className='comment-topline-left'>
+                    <Link to={comment.author_link}>
+                      <p className='comment-author'>{comment.author_full_name}</p>
+                    </Link>
+                    {this.renderCommentEditOrBody(comment)}
+                  </div>
+                  <div className='comment-topline-right'>
+                    {this.renderCommentEditAndDeleteButtons(comment)}
+                  </div>
                 </div>
-                <div id='comment-bottomline'>
+                <div className='comment-bottomline'>
                   <button
                     onClick={(e) => {
                       e.preventDefault();
@@ -183,19 +188,22 @@ class PostItem extends React.Component {
                   >
                     reply
                   </button>
-                  {this.renderComments(this.props.post.comments.
-                    filter((childComment) => comment.children.includes(childComment.id)))}
+                </div>
+              </div>
+            </header>
+              <div className='child-comments'>
+                {this.renderComments(this.props.post.comments.
+                  filter((childComment) => comment.children.includes(childComment.id)))}
 
-                    {this.props.modalIsOpen === `commentReply-${comment.id}` &&
+                {this.props.modalIsOpen === `commentReply-${comment.id}` &&
                     <CommentForm
                       edit={false}
                       body=''
-                      parent_id={comment}
+                      parent_id={comment.id}
                       openModal={this.props.openModal}
                       commentable_id={this.props.post.id}
                     />
-                    }
-                </div>
+                }
               </div>
             </div>
           );
