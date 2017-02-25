@@ -46,11 +46,11 @@
 }
 
 .post-form textarea {
-  padding-top: 20px;
   width: 400px;
   font-size: 18px;
   color: #5C6066;
   resize: none;
+  overflow: visible;
 }
 
 // .post-form textarea:focus {

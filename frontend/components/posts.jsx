@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import Post from './post_item';
+import Textarea from 'react-textarea-autosize';
 
 class Posts extends React.Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class Posts extends React.Component {
         <div className='post-form-middle'>
           <img className='avatar'
             src={this.props.currentUser.profile_small}/>
-          <textarea
+          <Textarea
             placeholder="What's on your mind?"
             value={this.state.body}
             onChange={this.handleChange} />
