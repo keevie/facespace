@@ -64,7 +64,7 @@ const postReducer = (state, action) => {
 const postsReducer = (state = {}, action) => {
   switch(action.type) {
     case RECEIVE_ALL_POSTS:
-      return Object.assign({}, state, action.posts);
+      return action.posts;
     case RECEIVE_POST:
       return Object.assign({}, state, {[action.post.id]: action.post});
     case REMOVE_POST:
