@@ -1,4 +1,5 @@
 import * as APIUtil from '../util/user_api_util';
+import { receieveCurrentUser } from './session_actions';
 
 export const RECEIVE_USER_INFO = 'RECEIVE_USER_INFO';
 export const UPDATE_USER = 'UPDATE_USER';
@@ -35,6 +36,7 @@ export const updateUser = (file, profileUrl) => {
   return (dispatch) => {
     dispatch(loadingUserInfo());
     return APIUtil.updateUser(file, profileUrl)
-      .then(user => dispatch(receiveUserInfo(user)));
+      .then(user => dispatch(receiveUserInfo(user)))
+        .then(user=> dispatch(receieveCurrentUser(user.user)));
   };
 };
