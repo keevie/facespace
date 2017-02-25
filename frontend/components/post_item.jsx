@@ -84,9 +84,14 @@ class PostItem extends React.Component {
       return (
         <form onSubmit={this.handleSubmit}>
           <textarea
+          onClick={(e) => e.stopPropagation()}
           onChange={this.handleChange}
           value={this.state.body}/>
-          <button>Post</button>
+        <button
+          onClick={(this.handleSubmit)}
+        >
+          Post
+        </button>
         </form>
       );
     }
