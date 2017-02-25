@@ -21,6 +21,7 @@
   display: flex;
   align-items: center;
   flex-direction: row;
+  padding: 20px 0px 20px 0px;
 }
 
 .post-form .underbar {
@@ -50,13 +51,7 @@
   font-size: 18px;
   color: #5C6066;
   resize: none;
-  overflow: visible;
 }
-
-// .post-form textarea:focus {
-//   font-size: 24px;
-//   padding-top: 30px;
-// }
 
 .post-form button {
   background-color: #4267b2;
