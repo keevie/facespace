@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import CommentForm from './comment_form_container';
+import Textarea from 'react-textarea-autosize';
 import { Link } from 'react-router';
 
 class PostItem extends React.Component {
@@ -82,16 +83,16 @@ class PostItem extends React.Component {
   renderEditOrBody () {
     if (this.props.modalIsOpen === `editPost-${this.props.post.id}`) {
       return (
-        <form onSubmit={this.handleSubmit}>
-          <textarea
-          onClick={(e) => e.stopPropagation()}
-          onChange={this.handleChange}
-          value={this.state.body}/>
-        <button
-          onClick={(this.handleSubmit)}
-        >
-          Post
-        </button>
+        <form className='post-form' onSubmit={this.handleSubmit}>
+          <div className='post-form-middle'>
+            <Textarea
+              onClick={(e) => e.stopPropagation()}
+              value={this.state.body}
+              onChange={this.handleChange} />
+          </div>
+          <div className='underbar'>
+            <button>Post</button>
+          </div>
         </form>
       );
     }
