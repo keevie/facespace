@@ -32,6 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 #paperclip for file upload/aws
 gem 'paperclip'
 gem 'figaro'
+gem 'pusher'
 gem 'aws-sdk', '>=2.0'
 
 # Use Capistrano for deployment

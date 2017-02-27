@@ -5,11 +5,12 @@ import { Link } from 'react-router';
 const modalStyle = {
   overlay: {
     width: '430px',
-    height: '660px',
+    minHeight: '10rem',
     position: 'absolute',
     left: '-380px',
     background: 'transparent',
-    zIndex: 100
+    zIndex: 100,
+    bottom: 'auto'
   },
 
   content: {
