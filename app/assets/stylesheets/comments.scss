@@ -21,9 +21,14 @@
   justify-content: space-between;
 }
 
+.comment-topline-left {
+  display: flex;
+}
+
 .comment-bottomline {
   display: flex;
   margin-top: 5px;
+  margin-left: 5px
 }
 
 .comment-not-avatar {
