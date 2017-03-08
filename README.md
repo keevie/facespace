@@ -1,5 +1,5 @@
-# README
+# Facespace
 
-FACESPACE!
+Facespace is a clone of facebook, the extremely popular social networking site. Facespace uses React and Redux on the frontend, and Rails on the backend.
 
-Real Readme coming
+Check it out at [facespace.website](facespace.website)
