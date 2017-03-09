@@ -8,6 +8,11 @@ class Api::CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     if @comment.save
       render :show
+      #commentable_id refers to the post that the comment is on
+      Pusher.trigger(
+        "wall-#{@comment.commentable.wall_id}",
+        "new-comment",
+        {sender: current_user.id})
     end
   end
 

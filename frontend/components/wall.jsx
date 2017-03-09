@@ -23,6 +23,7 @@ class Wall extends React.Component {
     this.coverUrl = this.coverUrl.bind(this);
     this.renderChangeCoverButton = this.renderChangeCoverButton.bind(this);
     this.renderChangeProfButton = this.renderChangeProfButton.bind(this);
+    this.activatePusher = this.activatePusher.bind(this);
   }
 
 
@@ -40,9 +41,22 @@ class Wall extends React.Component {
   }
 
   componentDidMount() {
+
     this.props.fetchUser(this.props.params.profile_url)
       .then(() => this.props.fetchTimelinePosts(this.props.user.id))
-        .then(() => this.setState({loading: false}));
+        .then(() => this.setState({loading: false}))
+          .then(() => this.activatePusher());
+  }
+
+  activatePusher() {
+    this.pusher = new Pusher('9b5a065bd2b14616be5b', {
+      encrypted: true
+    });
+    this.channel = this.pusher.subscribe(`wall-${this.props.user.id}`);
+
+    this.channel.bind('new-comment', () => {
+      this.props.fetchTimelinePosts(this.props.user.id);
+    });
   }
 
   componentWillReceiveProps(nextProps) {
