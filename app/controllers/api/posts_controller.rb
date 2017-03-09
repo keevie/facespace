@@ -3,17 +3,28 @@ class Api::PostsController < ApplicationController
     @post = Post.new(post_params);
     if @post.save
       render :show
-      Pusher.trigger(
-        "wall-#{@post.wall_id}",
-        "post-change",
-        {sender: current_user.id})
+      send_pusher_notifications
     else
       render json: @post.errors, status: 422
     end
   end
 
   def show
+  end
 
+  def send_pusher_notifications
+    friend_ids = current_user.friends.map {|friend| friend.id}
+    friend_ids.each do |id|
+      Pusher.trigger(
+        "newsfeed-#{id}",
+        "post-change",
+        {sender: current_user.id}
+      )
+    end
+    Pusher.trigger(
+      "wall-#{@post.wall_id}",
+      "post-change",
+      {sender: current_user.id})
   end
 
   def update
@@ -21,10 +32,7 @@ class Api::PostsController < ApplicationController
     if @post
       @post.update!(post_params)
       render :show
-      Pusher.trigger(
-        "wall-#{@post.wall_id}",
-        "post-change",
-        {sender: current_user.id})
+      send_pusher_notifications
     end
   end
 
@@ -54,10 +62,7 @@ class Api::PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     @post.destroy
     render :show
-    Pusher.trigger(
-      "wall-#{@post.wall_id}",
-      "post-change",
-      {sender: current_user.id})
+    send_pusher_notifications
   end
 
   def post_params
