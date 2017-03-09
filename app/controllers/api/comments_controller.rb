@@ -11,7 +11,7 @@ class Api::CommentsController < ApplicationController
       #commentable_id refers to the post that the comment is on
       Pusher.trigger(
         "wall-#{@comment.commentable.wall_id}",
-        "new-comment",
+        "post-change",
         {sender: current_user.id})
     end
   end
@@ -20,6 +20,10 @@ class Api::CommentsController < ApplicationController
     @comment = Comment.find_by(id: params[:id])
     @comment.destroy
     render :show
+    Pusher.trigger(
+      "wall-#{@comment.commentable.wall_id}",
+      "post-change",
+      {sender: current_user.id})
   end
 
   def update
@@ -27,6 +31,10 @@ class Api::CommentsController < ApplicationController
     if @comment
       @comment.update!(comment_params)
       render :show
+      Pusher.trigger(
+        "wall-#{@comment.commentable.wall_id}",
+        "post-change",
+        {sender: current_user.id})
     end
   end
 

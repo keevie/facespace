@@ -54,7 +54,7 @@ class Wall extends React.Component {
     });
     this.channel = this.pusher.subscribe(`wall-${this.props.user.id}`);
 
-    this.channel.bind('new-comment', () => {
+    this.channel.bind('post-change', () => {
       this.props.fetchTimelinePosts(this.props.user.id);
     });
   }
