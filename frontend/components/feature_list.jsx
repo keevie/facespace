@@ -7,17 +7,17 @@ const FeatureList = () => {
       <ul>
         <li>
           <img className='feature-icon'
-            src={window.facespaceAssets.featureOne}/>
+            src={window.facespaceAssets.features}/>
             <p>See photos and updates</p>
         </li>
         <li>
           <img  className='feature-icon'
-            src={window.facespaceAssets.featureTwo}/>
+            src={window.facespaceAssets.features}/>
             <p>Share what's new</p>
         </li>
         <li>
           <img  className='feature-icon'
-            src={window.facespaceAssets.featureThree}/>
+            src={window.facespaceAssets.features}/>
             <p>Find more</p>
         </li>
       </ul>
