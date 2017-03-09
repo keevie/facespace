@@ -25,6 +25,10 @@
   display: flex;
 }
 
+.comment-topline-right {
+  margin-right: 4px;
+}
+
 .comment-bottomline {
   display: flex;
   margin-top: 5px;
@@ -34,6 +38,7 @@
 .comment-not-avatar {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 
@@ -65,6 +70,7 @@
 
 .comment-heading {
   display: flex;
+  width: 100%;
 }
 
 .comment-topline i {
