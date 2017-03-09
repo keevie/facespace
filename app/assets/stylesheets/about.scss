@@ -1,0 +1,35 @@
+.about {
+  background: white;
+  padding: 10px;
+  width: 200px;
+  position: absolute;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 12px;
+}
+
+.about li {
+  margin: 10px 0px 10px 0px;
+}
+
+.about li i {
+  color: #aaa;
+  width: 20px;
+}
+
+#about-title {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(238, 238, 238);
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+#about-title i {
+  margin-right: 10px;
+  color: #4267b2;
+  font-size: 32px;
+}
+
+#about-title h2 {
+  font-size: 18px;
+}
