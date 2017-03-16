@@ -82,6 +82,7 @@
 
 .wall #cover-photo:hover + #edit-cover {
   position: absolute;
+  cursor: pointer;
   display: block;
   top: 0px;
   left: 25px;
@@ -95,6 +96,7 @@
 .wall #prof-photo-container:hover + #edit-prof {
   display: block;
   position: absolute;
+  cursor: pointer;
   top: 290px;
   z-index: 3;
   left: 25px;
@@ -108,6 +110,7 @@
 .wall #edit-cover:hover {
   display: block;
   position: absolute;
+  cursor: pointer;
   top: 0px;
   z-index: 3;
   left: 25px;
@@ -121,6 +124,7 @@
 .wall #edit-prof:hover {
   display: block;
   position: absolute;
+  cursor: pointer;
   top: 290px;
   z-index: 3;
   left: 25px;
