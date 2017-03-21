@@ -1,5 +1,4 @@
 class Api::UsersController < ApplicationController
-  # TO DO protect from rogue profile picture changers
   def create
     @user = User.new(user_params)
     if @user.save
