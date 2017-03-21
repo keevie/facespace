@@ -123,23 +123,4 @@ class User < ApplicationRecord
     session = Session.find_by(session_token: session_token)
     session.destroy!
   end
-
-  # def reset_session_token!
-  #   # new_session = Session.new(
-  #   #   user_id: self.id,
-  #   #   session_token: SecureRandom.urlsafe_base64
-  #   # )
-  #   # new_session.save!
-  #   # new_session.session_token
-  #   # debugger
-  #   self.session_token = SecureRandom.urlsafe_base64
-  #   self.save!
-  #   self.session_token
-  # end
-
-  private
-
-  # def ensure_session_token
-  #   self.session_token ||= SecureRandom.urlsafe_base64
-  # end
 end
