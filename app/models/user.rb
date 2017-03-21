@@ -116,7 +116,7 @@ class User < ApplicationRecord
       self, http_user_agent, ip_address
     )
 
-    new_session
+    new_session.session_token
   end
 
   def remove_session!(session_token)

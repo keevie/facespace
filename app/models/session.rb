@@ -20,8 +20,9 @@ class Session < ApplicationRecord
   def self.generate_session(user, http_user_agent, ip_address)
     new_token = SecureRandom::urlsafe_base64(16)
     self.create!(
-      token: new_token,
+      session_token: new_token,
       user_id: user.id,
+      ip_address: ip_address,
       http_user_agent: http_user_agent)
   end
 end
