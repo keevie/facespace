@@ -1,5 +1,6 @@
 # == Schema Information
 #
+#
 # Table name: users
 #
 #  id                   :integer          not null, primary key
@@ -51,9 +52,9 @@ class User < ApplicationRecord
 
   attr_reader :password
 
-  after_initialize :ensure_session_token
+  # after_initialize :ensure_session_token
 
-  # find posts on wall, no need to find all posts by user.
+  has_many :sessions
 
   has_many :posts,
     class_name: :Post,
@@ -110,15 +111,35 @@ class User < ApplicationRecord
     password
   end
 
-  def reset_session_token!
-    self.session_token = SecureRandom.urlsafe_base64
-    self.save!
-    self.session_token
+  def add_session!(http_user_agent, ip_address)
+    new_session = Session.generate_session(
+      self, http_user_agent, ip_address
+    )
+
+    new_session
   end
+
+  def remove_session!(session_token)
+    session = Session.find_by(session_token: session_token)
+    session.destroy!
+  end
+
+  # def reset_session_token!
+  #   # new_session = Session.new(
+  #   #   user_id: self.id,
+  #   #   session_token: SecureRandom.urlsafe_base64
+  #   # )
+  #   # new_session.save!
+  #   # new_session.session_token
+  #   # debugger
+  #   self.session_token = SecureRandom.urlsafe_base64
+  #   self.save!
+  #   self.session_token
+  # end
 
   private
 
-  def ensure_session_token
-    self.session_token ||= SecureRandom.urlsafe_base64
-  end
+  # def ensure_session_token
+  #   self.session_token ||= SecureRandom.urlsafe_base64
+  # end
 end

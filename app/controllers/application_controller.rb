@@ -7,15 +7,21 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find_by(session_token: session[:session_token])
+    return @current_user if @current_user
+    token = Session.find_by(session_token: session[:session_token])
+    @current_user = token ? token.user : nil
   end
 
   def login!(user)
-    session[:session_token] = user.reset_session_token!
+    session[:session_token] = user.add_session!(
+      request.env["HTTP_USER_AGENT"],
+      request.remote_ip
+    )
   end
 
   def logout!
-    current_user.reset_session_token!
+    @current_user = nil
+    current_user.try(:remove_session!, session[:session_token])
     session[:session_token] = nil
   end
 
